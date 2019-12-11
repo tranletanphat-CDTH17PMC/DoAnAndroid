@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2"
+        app:srcCompat="@drawable/user1"></ImageView>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/txtUserName"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:text="anh tuan"
+            android:textAlignment="center"></TextView>
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/diamond"></ImageView>
+
+        <TextView
+            android:id="@+id/txtCredit"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginBottom="18dp"
+            android:hint="2000"
+            android:textAlignment="center"
+            android:textColorHint="#64C5F8"
+            android:textStyle="bold">
+
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="190dp"
+        android:layout_gravity="center"
+        android:layout_weight="5"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnQLTK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#8BC34A"
+            android:onClick="ManHinhChinh_Click"
+            android:text="Quản lý tài khoản"
+            android:textColor="#FFFFFF"></Button>
+
+        <Button
+            android:id="@+id/btnTroChoiMoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#03A9F4"
+            android:onClick="ManHinhChinh_Click"
+            android:text="Trò chơi mới "
+            android:textColor="#FFFFFF"></Button>
+
+        <Button
+            android:id="@+id/btnLichSuChoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#9C27B0"
+            android:onClick="ManHinhChinh_Click"
+            android:text="Lịch sử chơi"
+            android:textColor="#FFFFFF"></Button>
+
+        <Button
+            android:id="@+id/btnBangXepHang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#FF5722"
+            android:onClick="ManHinhChinh_Click"
+            android:text="Bảng xếp hạng"
+            android:textColor="#FFFFFF"></Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF9800"
+            android:onClick="ManHinhChinh_Click"
+            android:text="Mua credit"
+            android:textColor="#FFFFFF"></Button>
+    </LinearLayout>
+</LinearLayout>

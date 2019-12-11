@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="7">
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="155dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/change_image"></ImageView>
+
+    <TextView
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Đổi hình đại diện"
+        android:textAlignment="center"
+
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+    <LinearLayout
+        android:layout_width="306dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:weightSum="5"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txtQLTenTaiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Tên tài khoản"></EditText>
+
+        <EditText
+            android:id="@+id/txtQLEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Email"></EditText>
+
+        <EditText
+            android:id="@+id/txtQLMK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Đổi mật khẩu"></EditText>
+
+        <EditText
+            android:id="@+id/txtQLMK2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Xác nhận mật khẩu"></EditText>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#03A9F4"
+            android:onClick="CapNhat"
+            android:text="Cập nhật"
+            android:textColor="#FFFFFF"></Button>
+    </LinearLayout>
+
+</LinearLayout>

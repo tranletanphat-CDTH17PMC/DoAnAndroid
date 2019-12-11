@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#03A9F4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="anh tuan"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"></TextView>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/heart"></ImageView>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/heart"></ImageView>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/heart"></ImageView>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/heart"></ImageView>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/heart"></ImageView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgDiamond"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            app:srcCompat="@drawable/diamond"></ImageView>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@+id/imgDiamond"
+            android:layout_toLeftOf="@+id/imgDiamond"
+            android:layout_toRightOf="@+id/linear1"
+            android:background="#FFC107"
+            android:gravity="center"
+            android:text="2000"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Chọn Lĩnh Vực"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"></TextView>
+
+        <Button
+            android:id="@+id/btnLinhVuc1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="#03A9F4"
+            android:text="Khoa học - Kỹ thuật"
+            android:textColor="#FCFFFFFF"></Button>
+
+        <Button
+            android:id="@+id/btnLinhVuc2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="#03A9F4"
+            android:text="Văn hóa - Xã hội - Nghệ thuật"
+            android:textColor="#FCFFFFFF"></Button>
+
+        <Button
+            android:id="@+id/btnLinhVuc3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="#03A9F4"
+            android:text="Lịch sử - Địa lý"
+            android:textColor="#FCFFFFFF"></Button>
+
+        <Button
+            android:id="@+id/btnLinhVuc4"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="#03A9F4"
+            android:text="Thể Thao"
+            android:textColor="#FCFFFFFF"></Button>
+    </LinearLayout>
+</LinearLayout>
