@@ -81,6 +81,11 @@ public class ManHinhChinh extends AppCompatActivity {
                 new AsyncTask_QL_TroChoiMoi(this).execute();
                 break;
             }
+            case R.id.btnMuaCredit:{
+                new Asystask_MuaCredit(this).execute();
+                break;
+            }
+
         }
     }
 }

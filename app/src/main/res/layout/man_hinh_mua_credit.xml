@@ -1,198 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="5">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:weightSum="5">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/linear1"
-            android:layout_width="240dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:background="#03A9F4"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:paddingLeft="5dp"
-                android:paddingTop="10dp"
-                android:text="anh tuan"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"></TextView>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgDiamond"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:background="#03A9F4"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toStartOf="@+id/imgDiamond"
-            android:layout_toLeftOf="@+id/imgDiamond"
-            android:layout_toRightOf="@+id/linear1"
-            android:background="#FFC107"
-            android:gravity="center"
-            android:text="2000"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="anh tuan"
+            android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textSize="16sp"></TextView>
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:gravity="center"
-            android:text="Mua Credit"
-            android:textAlignment="center"
-            android:textColor="#FBB400"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imgDiamond"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        app:srcCompat="@drawable/diamond"></ImageView>
 
-    </RelativeLayout>
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toStartOf="@+id/imgDiamond"
+        android:layout_toLeftOf="@+id/imgDiamond"
+        android:layout_toRightOf="@+id/linear1"
+        android:background="#FFC107"
+        android:gravity="center"
+        android:text="2000"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_weight="4">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:gravity="center"
+        android:text="Mua Credit"
+        android:textAlignment="center"
+        android:textColor="#FBB400"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+</RelativeLayout>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="160dp"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:text="$450"
-            android:textAlignment="center"></TextView>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="5dp"
+    android:layout_weight="4">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="40dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+    <TextView
+        android:id="@+id/txtGoiA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Gói A"></TextView>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="40dp"
-            android:gravity="center"
-            android:text="$290"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold"></TextView>
+    <ImageView
+        android:id="@+id/imgGoiA"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/txtGoiA"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        app:srcCompat="@drawable/diamond"></ImageView>
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="100dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+    <TextView
+        android:id="@+id/txtGiaTienA"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/imgGoiA"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="$450"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="50dp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:text="$95"
-            android:gravity="center"
-            android:textSize="30sp"></TextView>
+    <TextView
+        android:id="@+id/txtGoiB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/txtGoiA"
+        android:text="Gói B"></TextView>
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="100dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+    <ImageView
+        android:id="@+id/imgGoiB"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/txtGoiB"
+        android:layout_marginLeft="160dp"
+        android:layout_toEndOf="@+id/imgGoiA"
+        app:srcCompat="@drawable/diamond"></ImageView>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="50dp"
-            android:gravity="center"
-            android:text="$50"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold"></TextView>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/txtGoiC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtGiaTienA"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:text="Gói C"></TextView>
+
+    <ImageView
+        android:id="@+id/imgGoiC"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/txtGoiC"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/diamond"></ImageView>
+
+    <TextView
+        android:id="@+id/txtGiaTienC"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/imgGoiC"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="$95"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/txtGiaTienB"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imgGoiB"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/txtGiaTienA"
+        android:gravity="center"
+        android:text="$290"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/txtGoiD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtGiaTienB"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/txtGoiC"
+        android:text="Gói D"></TextView>
+
+    <ImageView
+        android:id="@+id/imgGoiD"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/txtGoiD"
+        android:layout_marginLeft="160dp"
+        android:layout_toEndOf="@+id/imgGoiC"
+        app:srcCompat="@drawable/diamond"></ImageView>
+
+    <TextView
+        android:id="@+id/txtGiaTienD"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/imgGoiD"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/txtGiaTienC"
+        android:gravity="center"
+        android:text="$50"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
+</RelativeLayout>
 
 
 </LinearLayout>
