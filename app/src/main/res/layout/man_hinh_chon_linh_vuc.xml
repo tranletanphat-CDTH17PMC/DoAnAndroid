@@ -110,6 +110,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonLinhVuc_Click"
             android:text="Khoa học - Kỹ thuật"
             android:textColor="#FCFFFFFF"></Button>
 
@@ -119,6 +120,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonLinhVuc_Click"
             android:text="Văn hóa - Xã hội - Nghệ thuật"
             android:textColor="#FCFFFFFF"></Button>
 
@@ -128,6 +130,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonLinhVuc_Click"
             android:text="Lịch sử - Địa lý"
             android:textColor="#FCFFFFFF"></Button>
 
@@ -137,6 +140,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonLinhVuc_Click"
             android:text="Thể Thao"
             android:textColor="#FCFFFFFF"></Button>
     </LinearLayout>

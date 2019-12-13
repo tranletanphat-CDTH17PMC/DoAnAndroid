@@ -1,4 +1,6 @@
-package com.example.doanandroid.ManHinhChinh;
+package com.example.doanandroid.ManHinhChinh.ManHinhChinh_TroChoiMoi;
+
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,13 +9,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class APIQuanLiTaiKhoan {
-    static String getAPIDSLinhVuc() {
+public class API_TroChoiMoi {
+    static String getDSCauHoi(String linhVucId) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-        String jSonLinhVuc = null;
+        String jSonCauHoi = null;
         try {
-            URL requestURL = new URL("http://10.0.3.2:8000/api/linh-vuc/danh-sach");
+            URL requestURL = new URL("http://10.0.3.2:8000/api/cau-hoi/thuoc?linhVucId=" + linhVucId);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -26,20 +28,18 @@ public class APIQuanLiTaiKhoan {
 
             String line;
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null)
+            {
                 builder.append(line);
             }
-            jSonLinhVuc = builder.toString();
-        }catch (IOException e)
-        {
+            jSonCauHoi = builder.toString();
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if(urlConnection != null)
-            {
+        } finally {
+            if (urlConnection != null) {
                 urlConnection.disconnect();
             }
-            if(reader != null)
-            {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -47,6 +47,6 @@ public class APIQuanLiTaiKhoan {
                 }
             }
         }
-        return jSonLinhVuc;
+        return jSonCauHoi;
     }
 }

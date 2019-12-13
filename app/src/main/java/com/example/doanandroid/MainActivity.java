@@ -1,15 +1,12 @@
-package com.example.doanandroid.ManHinhDangNhap;
+package com.example.doanandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.doanandroid.R;
-
-import java.util.concurrent.ExecutionException;
+import com.example.doanandroid.ManHinhDangNhap.AsyncTask_DangNhap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.man_hinh_dang_nhap);
     }
 
-    public void DangNhap(View view){
+    public void DangNhap(View view) {
         TextView txtTK, txtMK;
         String sTK = null, sMK = null;
 
@@ -30,9 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         sTK = txtTK.getText().toString();
         sMK = txtMK.getText().toString();
-
         //Xác thực tạm
-        new AsyncTask_DangNhap(sTK,sMK,this).execute();
+        new AsyncTask_DangNhap(sTK, sMK, this).execute();
 
     }
 }
