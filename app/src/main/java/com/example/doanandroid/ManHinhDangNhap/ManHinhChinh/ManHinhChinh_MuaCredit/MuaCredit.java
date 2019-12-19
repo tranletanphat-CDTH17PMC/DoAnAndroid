@@ -1,15 +1,15 @@
-package com.example.doanandroid.ManHinhChinh.ManHinhChinh_MuaCredit;
+package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_MuaCredit;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.doanandroid.ManHinhChinh.GoiCredit;
-import com.example.doanandroid.ManHinhChinh.LinhVuc;
+import com.example.doanandroid.Class.GoiCredit;
 import com.example.doanandroid.R;
 
 import org.json.JSONArray;
@@ -19,18 +19,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MuaCredit extends AppCompatActivity {
-    ArrayList<GoiCredit> goiCredits;
-    String jSonGoiCredit;
-    TextView tenGoiA,tenGoiB,tenGoiC,tenGoiD,giaTienA,giaTienB,giaTienC,giaTienD;
+    private ArrayList<GoiCredit> mCredit;
+    private String jSonGoiCredit;
+    private TextView tenGoiA, tenGoiB, tenGoiC, tenGoiD, giaTienA, giaTienB, giaTienC, giaTienD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_mua_credit);
-        AnhXa();
-    }
-    public void AnhXa()
-    {
+
         tenGoiA = findViewById(R.id.txtGoiA);
         tenGoiB = findViewById(R.id.txtGoiB);
         tenGoiC = findViewById(R.id.txtGoiC);
@@ -40,18 +37,28 @@ public class MuaCredit extends AppCompatActivity {
         giaTienC = findViewById(R.id.txtGiaTienC);
         giaTienD = findViewById(R.id.txtGiaTienD);
 
+
         Intent intent = getIntent();
         jSonGoiCredit = intent.getStringExtra("DanhSachGoiCredit");
 
+        Toast.makeText(this, jSonGoiCredit, Toast.LENGTH_LONG).show();
+
+        HienThiGoiCredit();
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void HienThiGoiCredit() {
+
         if (getListGoiCredit(jSonGoiCredit)) {
-            tenGoiA.setText(goiCredits.get(0).getTenGoi());
-            tenGoiB.setText(goiCredits.get(1).getTenGoi());
-            tenGoiC.setText(goiCredits.get(2).getTenGoi());
-            tenGoiD.setText(goiCredits.get(3).getTenGoi());
-            giaTienA.setText(goiCredits.get(0).getGiaTien());
-            giaTienB.setText(goiCredits.get(1).getGiaTien());
-            giaTienC.setText(goiCredits.get(2).getGiaTien());
-            giaTienD.setText(goiCredits.get(3).getGiaTien());
+            tenGoiA.setText(mCredit.get(0).getTenGoi());
+            tenGoiB.setText(mCredit.get(1).getTenGoi());
+            tenGoiC.setText(mCredit.get(2).getTenGoi());
+            tenGoiD.setText(mCredit.get(3).getTenGoi());
+
+            giaTienA.setText(mCredit.get(0).getGiaTien()+"VNĐ");
+            giaTienB.setText(mCredit.get(1).getGiaTien()+"VNĐ");
+            giaTienC.setText(mCredit.get(2).getGiaTien()+"VNĐ");
+            giaTienD.setText(mCredit.get(3).getGiaTien()+"VNĐ");
         } else {
             tenGoiA.setText("API not run");
             tenGoiB.setVisibility(View.INVISIBLE);
@@ -63,19 +70,19 @@ public class MuaCredit extends AppCompatActivity {
             giaTienD.setVisibility(View.INVISIBLE);
         }
     }
-    public Boolean getListGoiCredit(String jSonString)
-    {
+
+    public Boolean getListGoiCredit(String jSonString) {
         try {
-            goiCredits = new ArrayList<>();
+            mCredit = new ArrayList<>();
             JSONObject root = new JSONObject(jSonString);
-            JSONArray jr = root.getJSONArray("data");;
+            JSONArray jr = root.getJSONArray("data");
             int num = jr.length();
             for (int i = 0; i < num; i++) {
                 JSONObject jb = jr.getJSONObject(i);
                 GoiCredit thongTin = new GoiCredit();
                 thongTin.setTenGoi(jb.getString("ten_goi"));
                 thongTin.setGiaTien(jb.getString("so_tien"));
-                goiCredits.add(thongTin);
+                mCredit.add(thongTin);
             }
             return true;
         } catch (JSONException e) {

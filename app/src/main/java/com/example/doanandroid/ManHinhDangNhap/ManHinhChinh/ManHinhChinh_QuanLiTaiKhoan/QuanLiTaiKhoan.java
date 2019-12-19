@@ -1,4 +1,4 @@
-package com.example.doanandroid.ManHinhChinh.ManHinhChinh_QuanLiTaiKhoan;
+package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_QuanLiTaiKhoan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.doanandroid.ManHinhChinh.NguoiChoi;
+import com.example.doanandroid.Class.NguoiChoi;
 import com.example.doanandroid.R;
 
 import org.json.JSONArray;

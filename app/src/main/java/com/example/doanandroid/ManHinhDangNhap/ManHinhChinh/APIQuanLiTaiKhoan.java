@@ -1,4 +1,4 @@
-package com.example.doanandroid.ManHinhChinh;
+package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh;
 
 import java.io.BufferedReader;
 import java.io.IOException;

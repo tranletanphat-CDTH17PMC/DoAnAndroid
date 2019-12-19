@@ -1,4 +1,4 @@
-package com.example.doanandroid.ManHinhChinh;
+package com.example.doanandroid.Class;
 
 public class GoiCredit {
     private String tenGoi;

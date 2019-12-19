@@ -1,6 +1,4 @@
-package com.example.doanandroid.ManHinhChinh.ManHinhChinh_TroChoiMoi;
-
-import org.json.JSONException;
+package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,37 +7,34 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class API_TroChoiMoi {
-    static String getDSCauHoi(String linhVucId) {
+public class APIGoiCredit {
+    static String getAPIGoiCredit(){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-        String jSonCauHoi = null;
-        try {
-            URL requestURL = new URL("http://10.0.3.2:8000/api/cau-hoi/thuoc?linhVucId=" + linhVucId);
+        String jSonGoiCredit = null;
+        try{
+            URL requestURL = new URL("http://10.0.3.2:8000/api/goi-credit/danh-sach");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
             InputStream inputStream = urlConnection.getInputStream();
-
             reader = new BufferedReader(new InputStreamReader(inputStream));
-
             StringBuilder builder = new StringBuilder();
-
             String line;
-
-            while ((line = reader.readLine()) != null)
-            {
+            while((line = reader.readLine())!=null){
                 builder.append(line);
             }
-            jSonCauHoi = builder.toString();
-        } catch (IOException e) {
+            jSonGoiCredit = builder.toString();
+        }catch (IOException e){
             e.printStackTrace();
-        } finally {
-            if (urlConnection != null) {
+        }finally {
+            if(urlConnection != null)
+            {
                 urlConnection.disconnect();
             }
-            if (reader != null) {
+            if(reader != null)
+            {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -47,6 +42,6 @@ public class API_TroChoiMoi {
                 }
             }
         }
-        return jSonCauHoi;
+        return jSonGoiCredit;
     }
 }

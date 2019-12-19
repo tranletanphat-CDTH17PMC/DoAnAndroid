@@ -134,6 +134,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/txtNoiDung"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -143,37 +144,45 @@
             android:textStyle="bold"></TextView>
 
         <Button
+            android:id="@+id/txtPhuongAnA"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonDapAn"
             android:text="A. Triều Ngô "
             android:textColor="#FFE600"
             android:textStyle="bold"></Button>
 
         <Button
+            android:id="@+id/txtPhuongAnB"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonDapAn"
             android:text="B. Triều Hồ"
             android:textColor="#FFE600"
             android:textStyle="bold"></Button>
 
         <Button
+            android:id="@+id/txtPhuongAnC"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonDapAn"
             android:text="C. Các Chúa Nguyễn"
             android:textColor="#FFE600"
             android:textStyle="bold"></Button>
 
         <Button
+            android:id="@+id/txtPhuongAnD"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:background="#03A9F4"
+            android:onClick="ChonDapAn"
             android:text="D. Nhà Tây Sơn"
             android:textColor="#FFE600"
             android:textStyle="bold"></Button>

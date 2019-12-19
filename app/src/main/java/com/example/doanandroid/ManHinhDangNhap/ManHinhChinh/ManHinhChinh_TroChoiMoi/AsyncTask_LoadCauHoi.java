@@ -1,10 +1,9 @@
-package com.example.doanandroid.ManHinhChinh.ManHinhChinh_TroChoiMoi;
+package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 public class AsyncTask_LoadCauHoi extends AsyncTask<String, String, String> {
     private Context context;

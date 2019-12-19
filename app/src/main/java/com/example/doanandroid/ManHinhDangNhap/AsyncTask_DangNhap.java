@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.doanandroid.ManHinhChinh.ManHinhChinh;
+import com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh;
 
 public class AsyncTask_DangNhap extends AsyncTask<String, String, String> {
 

@@ -1,4 +1,4 @@
-package com.example.doanandroid.ManHinhChinh;
+package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 
-import com.example.doanandroid.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroChoiMoi;
+import com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroChoiMoi;
 
 
 public class AsyncTask_QL_TroChoiMoi extends AsyncTask<String, String, String> {

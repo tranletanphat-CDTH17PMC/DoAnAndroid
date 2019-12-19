@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManHinhChinh.ManHinhChinh_TroChoiMoi.TraLoiCauHoi"></activity>
-        <activity android:name=".ManHinhChinh.ManHinhChinh_TroChoiMoi.TroChoiMoi" />
-        <activity android:name=".ManHinhChinh.ManHinhChinh_QuanLiTaiKhoan.QuanLiTaiKhoan" />
-        <activity android:name=".ManHinhChinh.ManHinhChinh" />
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_MuaCredit.MuaCredit"></activity>
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TraLoiCauHoi" />
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroChoiMoi" />
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_QuanLiTaiKhoan.QuanLiTaiKhoan" />
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
