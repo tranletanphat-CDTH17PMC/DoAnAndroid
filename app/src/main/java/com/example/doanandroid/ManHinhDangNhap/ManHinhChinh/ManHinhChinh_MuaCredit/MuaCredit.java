@@ -41,7 +41,7 @@ public class MuaCredit extends AppCompatActivity {
         Intent intent = getIntent();
         jSonGoiCredit = intent.getStringExtra("DanhSachGoiCredit");
 
-        Toast.makeText(this, jSonGoiCredit, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, jSonGoiCredit, Toast.LENGTH_LONG).show();
 
         HienThiGoiCredit();
     }
@@ -55,10 +55,10 @@ public class MuaCredit extends AppCompatActivity {
             tenGoiC.setText(mCredit.get(2).getTenGoi());
             tenGoiD.setText(mCredit.get(3).getTenGoi());
 
-            giaTienA.setText(mCredit.get(0).getGiaTien()+"VNĐ");
-            giaTienB.setText(mCredit.get(1).getGiaTien()+"VNĐ");
-            giaTienC.setText(mCredit.get(2).getGiaTien()+"VNĐ");
-            giaTienD.setText(mCredit.get(3).getGiaTien()+"VNĐ");
+            giaTienA.setText("$"+mCredit.get(0).getGiaTien());
+            giaTienB.setText("$"+mCredit.get(1).getGiaTien());
+            giaTienC.setText("$"+mCredit.get(2).getGiaTien());
+            giaTienD.setText("$"+mCredit.get(3).getGiaTien());
         } else {
             tenGoiA.setText("API not run");
             tenGoiB.setVisibility(View.INVISIBLE);
