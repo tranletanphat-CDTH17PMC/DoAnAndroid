@@ -76,12 +76,14 @@ public class TraLoiCauHoi extends AppCompatActivity {
         if (getDSCauHoi(jSonDSCauHoi)) {
             int i = TronCauHoi();
             if (!(i == -1)) {
-                NoiDung.setText(mCauHoi.get(i).getNoiDung());
-                PhuongAnA.setText(mCauHoi.get(i).getPhuongAnA());
-                PhuongAnB.setText(mCauHoi.get(i).getPhuongAnB());
-                PhuongAnC.setText(mCauHoi.get(i).getPhuongAnC());
-                PhuongAnD.setText(mCauHoi.get(i).getPhuongAnD());
-                PhuongAnDung = mCauHoi.get(i).getPhuongAnDung();
+                CauHoi cauHoi=mCauHoi.get(i);
+                cauHoi.TronCauHoi();
+                NoiDung.setText(cauHoi.getNoiDung());
+                PhuongAnA.setText(cauHoi.getPhuongAnA());
+                PhuongAnB.setText(cauHoi.getPhuongAnB());
+                PhuongAnC.setText(cauHoi.getPhuongAnC());
+                PhuongAnD.setText(cauHoi.getPhuongAnD());
+                PhuongAnDung = cauHoi.getPhuongAnDung();
             } else {
                 Toast.makeText(this, "Hết câu hỏi rồi ba", Toast.LENGTH_SHORT).show();
             }
