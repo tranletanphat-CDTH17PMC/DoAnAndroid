@@ -13,7 +13,7 @@ public class APINguoiChoi {
         BufferedReader reader = null;
         String jSonNguoiChoi = null;
         try {
-            URL requestURL = new URL("http://10.0.3.2:8000/api/nguoi-choi/show?Username="+username+"#Password="+password);
+            URL requestURL = new URL("http://10.0.2.2:8000/api/nguoi-choi/show?Username="+username+"#Password="+password);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

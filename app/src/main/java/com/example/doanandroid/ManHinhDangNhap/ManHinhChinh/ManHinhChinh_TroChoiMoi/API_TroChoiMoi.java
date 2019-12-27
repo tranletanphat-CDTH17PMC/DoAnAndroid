@@ -13,7 +13,7 @@ public class API_TroChoiMoi {
         BufferedReader reader = null;
         String jSonCauHoi = null;
         try {
-            URL requestURL = new URL("http://10.0.3.2:8000/api/cau-hoi/thuoc?linhVucId=" + linhVucId);
+            URL requestURL = new URL("http://10.0.2.2:8000/api/cau-hoi/thuoc?linhVucId=" + linhVucId);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
