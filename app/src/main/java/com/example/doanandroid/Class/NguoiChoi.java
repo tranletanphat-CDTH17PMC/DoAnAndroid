@@ -1,6 +1,7 @@
 package com.example.doanandroid.Class;
 
 public class NguoiChoi {
+    private String ID;
     private String TenDangNhap;
     private String MatKhau;
     private String Email;
@@ -54,5 +55,13 @@ public class NguoiChoi {
 
     public void setCredit(String credit) {
         Credit = credit;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

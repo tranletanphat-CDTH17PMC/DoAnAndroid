@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         sTK = txtTK.getText().toString();
         sMK = txtMK.getText().toString();
         //Xác thực tạm
-        new AsyncTask_DangNhap(sTK, sMK, this).execute();
+        new AsyncTask_DangNhap(sTK, this).execute();
 
     }
 }

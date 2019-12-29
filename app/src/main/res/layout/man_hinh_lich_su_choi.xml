@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_LichSu.LichSuChoi">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/ThongTinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/imgBackground"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:background="@color/Sky"/>
+
+            <TextView
+                android:id="@+id/txtTenTaiKhoan"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textStyle="bold|italic"
+                android:text="TRẦN LÊ TẤN PHÁT"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtCredit"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_toLeftOf="@id/imgDiamond"
+                android:background="#FFC107"
+                android:gravity="center"
+                android:text="2000"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgDiamond"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                app:srcCompat="@drawable/diamond" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLichSu"
+        android:layout_width="match_parent"
+        android:layout_height="500dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/btnBackLichSu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="Back"
+            android:text="Trở về" />
+    </LinearLayout>
+
+</LinearLayout>

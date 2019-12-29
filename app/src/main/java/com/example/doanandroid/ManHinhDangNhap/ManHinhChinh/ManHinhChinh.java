@@ -55,6 +55,7 @@ public class ManHinhChinh extends AppCompatActivity {
             for (int i = 0; i < num; i++) {
                 JSONObject jb = jr.getJSONObject(i);
                 NguoiChoi thongTin = new NguoiChoi();
+                thongTin.setID(jb.getString("id"));
                 thongTin.setTenDangNhap(jb.getString("ten_dang_nhap"));
                 thongTin.setMatKhau(jb.getString("mat_khau"));
                 thongTin.setEmail(jb.getString("email"));
@@ -79,12 +80,16 @@ public class ManHinhChinh extends AppCompatActivity {
                 break;
             }
             case R.id.btnTroChoiMoi:{
-                new AsyncTask_QL_TroChoiMoi(this).execute();
+                new AsyncTask_TroChoiMoi(this).execute();
                 break;
             }
             case R.id.btnMuaCredit:{
                 new Asystask_MuaCredit(this).execute();
                 break;
+            }
+            case R.id.btnLichSuChoi:{
+                String NguoiChoiID = nguoiChoi.get(0).getID();
+                new AsyncTask_LichSu(this).execute(NguoiChoiID);
             }
 
         }

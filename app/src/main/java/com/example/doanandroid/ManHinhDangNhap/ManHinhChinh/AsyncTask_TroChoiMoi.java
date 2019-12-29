@@ -10,11 +10,11 @@ import android.widget.Toast;
 import com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroChoiMoi;
 
 
-public class AsyncTask_QL_TroChoiMoi extends AsyncTask<String, String, String> {
+public class AsyncTask_TroChoiMoi extends AsyncTask<String, String, String> {
 
     private Context context;
 
-    public AsyncTask_QL_TroChoiMoi(Context context) {
+    public AsyncTask_TroChoiMoi(Context context) {
         this.context = context;
     }
 
