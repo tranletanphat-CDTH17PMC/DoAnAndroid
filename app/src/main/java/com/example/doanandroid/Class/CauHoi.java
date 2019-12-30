@@ -69,7 +69,7 @@ public class CauHoi {
         CauHoiID = cauHoiID;
     }
 
-    public void TronCauHoi()
+    public void TronDapAn()
     {
         Random r=new Random();
         int a,b,c,d;
