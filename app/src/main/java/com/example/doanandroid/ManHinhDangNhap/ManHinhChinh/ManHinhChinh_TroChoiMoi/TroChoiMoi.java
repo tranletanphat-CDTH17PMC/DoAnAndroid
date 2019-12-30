@@ -100,4 +100,8 @@ public class TroChoiMoi extends AppCompatActivity {
             }
         }
     }
+    public void Back(View view)
+    {
+        this.finish();
+    }
 }
