@@ -2,10 +2,13 @@ package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroCho
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -297,5 +300,24 @@ public class TraLoiCauHoi extends AppCompatActivity {
             PhuongAnD.setBackgroundResource(R.drawable.mau_dung);
         }
     }
-
+    public void pause(View view)
+    {
+        final Dialog pause=new Dialog(this);
+        pause.setContentView(R.layout.pause);
+        pause.setCanceledOnTouchOutside(false);
+        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        Button btnTiepTuc=pause.findViewById(R.id.btnTiepTuc);
+        btnTiepTuc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                pause.dismiss();
+            }
+        });
+        Button btnThoat=pause.findViewById(R.id.btnThoat);
+        btnThoat.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        pause.show();
+    }
 }

@@ -8,82 +8,49 @@
     android:weightSum="11">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:id="@+id/linear1"
-            android:layout_width="240dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:background="#03A9F4"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:paddingLeft="5dp"
-                android:paddingTop="10dp"
-                android:text="anh tuan"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"></TextView>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/heart"></ImageView>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/heart"></ImageView>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/heart"></ImageView>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/heart"></ImageView>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/heartbroken"></ImageView>
-        </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageView
-            android:id="@+id/imgDiamond"
-            android:layout_width="40dp"
+            android:layout_width="310dp"
             android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+            android:background="@color/Sky" />
 
         <TextView
-            android:layout_width="70dp"
+            android:id="@+id/txtTenTaiKhoan"
+            android:layout_width="210dp"
             android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toStartOf="@+id/imgDiamond"
-            android:layout_toLeftOf="@+id/imgDiamond"
-            android:layout_toRightOf="@+id/linear1"
+            android:gravity="center"
+            android:text="anh tuan"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
+
+        <ImageView
+            android:layout_toLeftOf="@id/btnPause"
+            android:id="@+id/imgDiamond"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/diamond" />
+
+        <TextView
+            android:id="@+id/txtCredit"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/txtTenTaiKhoan"
             android:background="#FFC107"
             android:gravity="center"
             android:text="2000"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
+
+        <Button
+            android:background="@drawable/pause"
+            android:id="@+id/btnPause"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:onClick="pause" />
 
     </RelativeLayout>
 
@@ -103,7 +70,7 @@
             android:text="Điểm: 900"
             android:textAlignment="center"
             android:textSize="30sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -114,23 +81,22 @@
             android:gravity="center"
             android:text="Câu hỏi"
             android:textAlignment="center"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="80dp"
-            app:srcCompat="@drawable/nine"></ImageView>
-
+            app:srcCompat="@drawable/nine"/>
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:layout_weight="4"
         android:orientation="vertical">
 
         <TextView
@@ -141,7 +107,7 @@
             android:text="Đại Ngu là quốc hiệu của triều đại nào?"
             android:textAlignment="center"
             android:textSize="15sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/txtPhuongAnA"
@@ -152,7 +118,7 @@
             android:onClick="ChonDapAn"
             android:text="A. Triều Ngô "
             android:textColor="#FFE600"
-            android:textStyle="bold"></Button>
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/txtPhuongAnB"
@@ -163,7 +129,7 @@
             android:onClick="ChonDapAn"
             android:text="B. Triều Hồ"
             android:textColor="#FFE600"
-            android:textStyle="bold"></Button>
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/txtPhuongAnC"
@@ -174,7 +140,7 @@
             android:onClick="ChonDapAn"
             android:text="C. Các Chúa Nguyễn"
             android:textColor="#FFE600"
-            android:textStyle="bold"></Button>
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/txtPhuongAnD"
@@ -185,13 +151,13 @@
             android:onClick="ChonDapAn"
             android:text="D. Nhà Tây Sơn"
             android:textColor="#FFE600"
-            android:textStyle="bold"></Button>
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></ImageView>
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -206,34 +172,34 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/back"></ImageView>
+            app:srcCompat="@drawable/back"/>
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/removeresult"></ImageView>
+            app:srcCompat="@drawable/removeresult"/>
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/client"></ImageView>
+            app:srcCompat="@drawable/client"/>
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/phone"></ImageView>
+            app:srcCompat="@drawable/phone"/>
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/credit"></ImageView>
+            app:srcCompat="@drawable/credit"/>
     </LinearLayout>
 </LinearLayout>
