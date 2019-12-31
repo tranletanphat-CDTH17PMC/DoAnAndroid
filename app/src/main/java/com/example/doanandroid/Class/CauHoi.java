@@ -12,7 +12,6 @@ public class CauHoi {
     private String PhuongAnC;
     private String PhuongAnD;
     private String PhuongAnDung;
-
     public String getNoiDung() {
         return NoiDung;
     }

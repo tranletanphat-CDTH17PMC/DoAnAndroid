@@ -9,10 +9,12 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.doanandroid.Class.CauHoi;
+import com.example.doanandroid.Class.TroGiupKhanGia;
 import com.example.doanandroid.R;
 
 import org.json.JSONArray;
@@ -26,6 +28,7 @@ import java.util.Random;
 public class TraLoiCauHoi extends AppCompatActivity {
     private String jSonDSCauHoi;
     CauHoi cauHoi;
+    private ArrayList<TextView> mTroGiup;
     private ArrayList<CauHoi> mCauHoi;
     private ArrayList<String> mRandom;
     private TextView NoiDung, PhuongAnA, PhuongAnB, PhuongAnC, PhuongAnD;
@@ -137,6 +140,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
     public void ChonDapAn(View view) {
         switch (view.getId()) {
             case R.id.txtPhuongAnA: {
+
                 final String DapAn = "A";
                 PhuongAnA.setBackgroundResource(R.drawable.mau_chon);
                 if (KiemTraDapAn(DapAn)) {
@@ -300,19 +304,19 @@ public class TraLoiCauHoi extends AppCompatActivity {
             PhuongAnD.setBackgroundResource(R.drawable.mau_dung);
         }
     }
-    public void pause(View view)
-    {
-        final Dialog pause=new Dialog(this);
+
+    public void pause(View view) {
+        final Dialog pause = new Dialog(this);
         pause.setContentView(R.layout.pause);
         pause.setCanceledOnTouchOutside(false);
-        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-        Button btnTiepTuc=pause.findViewById(R.id.btnTiepTuc);
+        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        Button btnTiepTuc = pause.findViewById(R.id.btnTiepTuc);
         btnTiepTuc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 pause.dismiss();
             }
         });
-        Button btnThoat=pause.findViewById(R.id.btnThoat);
+        Button btnThoat = pause.findViewById(R.id.btnThoat);
         btnThoat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
@@ -320,4 +324,24 @@ public class TraLoiCauHoi extends AppCompatActivity {
         });
         pause.show();
     }
+
+    public void TroGiup5050(View view) {
+        ImageView img = findViewById(R.id.imgTroGiup5050);
+        img.setImageResource(R.drawable.loaitrogiup5050);
+        img.setEnabled(false);
+    }
+
+    public void TroGiupKhanGia(View view) {
+        ImageView img = findViewById(R.id.imgTroGiupKhanGia);
+        img.setImageResource(R.drawable.loaitrogiupkhangia);
+        img.setEnabled(false);
+    }
+
+    public void TroGiupNguoiThan(View view) {
+        ImageView img = findViewById(R.id.imgTroGiupNguoiThan);
+        img.setImageResource(R.drawable.loaitrogiupgoidienthoai);
+        img.setEnabled(false);
+    }
+
+
 }

@@ -164,39 +164,44 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="1"
-       android:paddingLeft="40dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             app:srcCompat="@drawable/back"/>
 
         <ImageView
-            android:layout_width="30dp"
+            android:id="@+id/imgTroGiup5050"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:onClick="TroGiup5050"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            app:srcCompat="@drawable/trogiup5050"/>
+
+        <ImageView
+            android:id="@+id/imgTroGiupKhanGia"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/removeresult"/>
+            android:onClick="TroGiupKhanGia"
+            app:srcCompat="@drawable/trogiupkhangia"/>
 
         <ImageView
-            android:layout_width="30dp"
+            android:id="@+id/imgTroGiupNguoiThan"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/client"/>
+            android:onClick="TroGiupNguoiThan"
+            app:srcCompat="@drawable/trogiupgoidien"/>
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            app:srcCompat="@drawable/phone"/>
-
-        <ImageView
-            android:layout_width="30dp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
