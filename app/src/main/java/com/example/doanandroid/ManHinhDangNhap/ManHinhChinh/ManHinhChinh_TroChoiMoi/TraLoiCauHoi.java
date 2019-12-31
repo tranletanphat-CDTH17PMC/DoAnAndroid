@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.doanandroid.Class.CauHoi;
-import com.example.doanandroid.Class.TroGiupKhanGia;
 import com.example.doanandroid.R;
 
 import org.json.JSONArray;
@@ -84,6 +83,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void HienThiCauHoi() {
+        PhuongAnA.setVisibility(View.VISIBLE);
+        PhuongAnB.setVisibility(View.VISIBLE);
+        PhuongAnC.setVisibility(View.VISIBLE);
+        PhuongAnD.setVisibility(View.VISIBLE);
         if (getDSCauHoi(jSonDSCauHoi)) {
             PhuongAnA.setBackgroundResource(R.drawable.mau_cauhoi);
             PhuongAnB.setBackgroundResource(R.drawable.mau_cauhoi);
@@ -285,6 +288,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
         }
     }
 
+
     public boolean KiemTraDapAn(String dapAn) {
         cauHoi = mCauHoi.get(vtht);
         if (dapAn.equals(cauHoi.getPhuongAnDung())) {
@@ -329,6 +333,24 @@ public class TraLoiCauHoi extends AppCompatActivity {
         ImageView img = findViewById(R.id.imgTroGiup5050);
         img.setImageResource(R.drawable.loaitrogiup5050);
         img.setEnabled(false);
+        Random r = new Random();
+        int vtRandom = r.nextInt(4);
+        int vtA = cauHoi.getVtA();
+        int vtB = cauHoi.getVtB();
+        int vtC = cauHoi.getVtC();
+        int vtD = cauHoi.getVtD();
+        if (!(KiemTraDapAn("A") | vtA == vtRandom)) {
+            PhuongAnA.setVisibility(View.INVISIBLE);
+        }
+        if (!(KiemTraDapAn("B") | vtB == vtRandom)) {
+            PhuongAnB.setVisibility(View.INVISIBLE);
+        }
+        if (!(KiemTraDapAn("C") | vtC == vtRandom)) {
+            PhuongAnC.setVisibility(View.INVISIBLE);
+        }
+        if (!(KiemTraDapAn("D") | vtD == vtRandom)) {
+            PhuongAnD.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void TroGiupKhanGia(View view) {

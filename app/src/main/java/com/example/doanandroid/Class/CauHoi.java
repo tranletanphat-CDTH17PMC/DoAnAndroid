@@ -2,6 +2,7 @@ package com.example.doanandroid.Class;
 
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class CauHoi {
@@ -12,6 +13,11 @@ public class CauHoi {
     private String PhuongAnC;
     private String PhuongAnD;
     private String PhuongAnDung;
+    private int vtA;
+    private int vtB;
+    private int vtC;
+    private int vtD;
+
     public String getNoiDung() {
         return NoiDung;
     }
@@ -68,91 +74,102 @@ public class CauHoi {
         CauHoiID = cauHoiID;
     }
 
-    public void TronDapAn()
-    {
-        Random r=new Random();
-        int a,b,c,d;
-        String CauA,CauB,CauC,CauD;
-        CauA=this.PhuongAnA;
-        CauB=this.PhuongAnB;
-        CauC=this.PhuongAnC;
-        CauD=this.PhuongAnD;
-        a=r.nextInt(4);
-        Tron(a,CauA);
+    public void TronDapAn() {
+        Random r = new Random();
+        int a, b, c, d;
+        String CauA, CauB, CauC, CauD;
+        CauA = this.PhuongAnA;
+        CauB = this.PhuongAnB;
+        CauC = this.PhuongAnC;
+        CauD = this.PhuongAnD;
+        a = r.nextInt(4);
+        Tron(a, CauA);
+        setVtA(a);
         do {
-            b=r.nextInt(4);
-        }while (b==a);
-        Tron(b,CauB);
-        do{
-            c=r.nextInt(4);
-        }while (c==a||c==b);
-        Tron(c,CauC);
-        do{
-            d=r.nextInt(4);
-        }while (d==a||d==b||d==c);
-        Tron(d,CauD);
+            b = r.nextInt(4);
+        } while (b == a);
+        Tron(b, CauB);
+        setVtB(b);
+        do {
+            c = r.nextInt(4);
+        } while (c == a || c == b);
+        Tron(c, CauC);
+        setVtC(c);
+        do {
+            d = r.nextInt(4);
+        } while (d == a || d == b || d == c);
+        Tron(d, CauD);
+        setVtD(d);
 
-        TimDapAn(a,b,c,d);
-        Log.d("da",PhuongAnDung);
+        TimDapAn(a, b, c, d);
+        Log.d("da", PhuongAnDung);
     }
 
-    private void Tron(int vt,String CauTraLoi)
-    {
-        if(vt==0)
-        {
-            this.PhuongAnA=CauTraLoi;
-        }
-        else if(vt==1)
-        {
-            this.PhuongAnB=CauTraLoi;
-        }
-        else if(vt==2)
-        {
-            this.PhuongAnC=CauTraLoi;
-        }
-        else if(vt==3)
-        {
-            this.PhuongAnD=CauTraLoi;
+    private void Tron(int vt, String CauTraLoi) {
+        if (vt == 0) {
+            this.PhuongAnA = CauTraLoi;
+        } else if (vt == 1) {
+            this.PhuongAnB = CauTraLoi;
+        } else if (vt == 2) {
+            this.PhuongAnC = CauTraLoi;
+        } else if (vt == 3) {
+            this.PhuongAnD = CauTraLoi;
         }
     }
 
-    private void TimDapAn(int a,int b,int c,int d)
-    {
-        if(this.PhuongAnDung.equals("A"))
-        {
+    private void TimDapAn(int a, int b, int c, int d) {
+        if (this.PhuongAnDung.equals("A")) {
             LayDA(a);
-        }
-        else if(this.PhuongAnDung.equals("B"))
-        {
+        } else if (this.PhuongAnDung.equals("B")) {
             LayDA(b);
-        }
-        else if(this.PhuongAnDung.equals("C"))
-        {
+        } else if (this.PhuongAnDung.equals("C")) {
             LayDA(c);
-        }
-        else if(this.PhuongAnDung.equals("D"))
-        {
+        } else if (this.PhuongAnDung.equals("D")) {
             LayDA(d);
         }
     }
 
-    private void LayDA(int vt)
-    {
-        if(vt==0)
-        {
-            this.PhuongAnDung="A";
+    private void LayDA(int vt) {
+        if (vt == 0) {
+            this.PhuongAnDung = "A";
+        } else if (vt == 1) {
+            this.PhuongAnDung = "B";
+        } else if (vt == 2) {
+            this.PhuongAnDung = "C";
+        } else if (vt == 3) {
+            this.PhuongAnDung = "D";
         }
-        else if(vt==1)
-        {
-            this.PhuongAnDung="B";
-        }
-        else if(vt==2)
-        {
-            this.PhuongAnDung="C";
-        }
-        else if(vt==3)
-        {
-            this.PhuongAnDung="D";
-        }
+    }
+
+    public int getVtA() {
+        return vtA;
+    }
+
+    public void setVtA(int vtA) {
+        this.vtA = vtA;
+    }
+
+    public int getVtB() {
+        return vtB;
+    }
+
+    public void setVtB(int vtB) {
+        this.vtB = vtB;
+    }
+
+    public int getVtC() {
+        return vtC;
+    }
+
+    public void setVtC(int vtC) {
+        this.vtC = vtC;
+    }
+
+    public int getVtD() {
+        return vtD;
+    }
+
+    public void setVtD(int vtD) {
+        this.vtD = vtD;
     }
 }
