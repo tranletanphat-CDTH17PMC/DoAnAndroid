@@ -9,17 +9,17 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.doanandroid.Class.CauHoi;
+import com.example.doanandroid.Class.DongHo;
 import com.example.doanandroid.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +27,6 @@ import java.util.Random;
 public class TraLoiCauHoi extends AppCompatActivity {
     private String jSonDSCauHoi;
     CauHoi cauHoi;
-    private ArrayList<TextView> mTroGiup;
     private ArrayList<CauHoi> mCauHoi;
     private ArrayList<String> mRandom;
     private TextView NoiDung, PhuongAnA, PhuongAnB, PhuongAnC, PhuongAnD;
@@ -35,17 +34,23 @@ public class TraLoiCauHoi extends AppCompatActivity {
     private String PhuongAnDung = null;
     private int vtht;
     private Random random;
-
+    int n=999;
+    int temp=0;
+    DongHo dongHo;
+    ProgressBar mDongHo;
+    public static String kq="start";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_hien_thi_cau_hoi);
 
+        mDongHo=findViewById(R.id.ProBarDongHo);
         NoiDung = findViewById(R.id.txtNoiDung);
         PhuongAnA = findViewById(R.id.txtPhuongAnA);
         PhuongAnB = findViewById(R.id.txtPhuongAnB);
         PhuongAnC = findViewById(R.id.txtPhuongAnC);
         PhuongAnD = findViewById(R.id.txtPhuongAnD);
+        dongHo=new DongHo(mDongHo,this);
         //
         mRandom = new ArrayList<>();
         Intent intent = getIntent();
@@ -83,10 +88,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void HienThiCauHoi() {
-        PhuongAnA.setVisibility(View.VISIBLE);
-        PhuongAnB.setVisibility(View.VISIBLE);
-        PhuongAnC.setVisibility(View.VISIBLE);
-        PhuongAnD.setVisibility(View.VISIBLE);
+        temp=0;
+        kq="start";
+        dongHo.cancel(true);
+        startDongHo();
         if (getDSCauHoi(jSonDSCauHoi)) {
             PhuongAnA.setBackgroundResource(R.drawable.mau_cauhoi);
             PhuongAnB.setBackgroundResource(R.drawable.mau_cauhoi);
@@ -143,7 +148,6 @@ public class TraLoiCauHoi extends AppCompatActivity {
     public void ChonDapAn(View view) {
         switch (view.getId()) {
             case R.id.txtPhuongAnA: {
-
                 final String DapAn = "A";
                 PhuongAnA.setBackgroundResource(R.drawable.mau_chon);
                 if (KiemTraDapAn(DapAn)) {
@@ -215,7 +219,6 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 break;
             }
             case R.id.txtPhuongAnC: {
-//                HienThiCauHoi();
                 final String DapAn = "C";
                 PhuongAnC.setBackgroundResource(R.drawable.mau_chon);
                 if (KiemTraDapAn(DapAn)) {
@@ -288,7 +291,6 @@ public class TraLoiCauHoi extends AppCompatActivity {
         }
     }
 
-
     public boolean KiemTraDapAn(String dapAn) {
         cauHoi = mCauHoi.get(vtht);
         if (dapAn.equals(cauHoi.getPhuongAnDung())) {
@@ -308,19 +310,21 @@ public class TraLoiCauHoi extends AppCompatActivity {
             PhuongAnD.setBackgroundResource(R.drawable.mau_dung);
         }
     }
-
-    public void pause(View view) {
-        final Dialog pause = new Dialog(this);
+    public void pause(View view)
+    {
+        stopDongHo();
+        final Dialog pause=new Dialog(this);
         pause.setContentView(R.layout.pause);
         pause.setCanceledOnTouchOutside(false);
-        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        Button btnTiepTuc = pause.findViewById(R.id.btnTiepTuc);
+        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        Button btnTiepTuc=pause.findViewById(R.id.btnTiepTuc);
         btnTiepTuc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                startDongHo();
                 pause.dismiss();
             }
         });
-        Button btnThoat = pause.findViewById(R.id.btnThoat);
+        Button btnThoat=pause.findViewById(R.id.btnThoat);
         btnThoat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
@@ -328,42 +332,16 @@ public class TraLoiCauHoi extends AppCompatActivity {
         });
         pause.show();
     }
-
-    public void TroGiup5050(View view) {
-        ImageView img = findViewById(R.id.imgTroGiup5050);
-        img.setImageResource(R.drawable.loaitrogiup5050);
-        img.setEnabled(false);
-        Random r = new Random();
-        int vtRandom = r.nextInt(4);
-        int vtA = cauHoi.getVtA();
-        int vtB = cauHoi.getVtB();
-        int vtC = cauHoi.getVtC();
-        int vtD = cauHoi.getVtD();
-        if (!(KiemTraDapAn("A") | vtA == vtRandom)) {
-            PhuongAnA.setVisibility(View.INVISIBLE);
-        }
-        if (!(KiemTraDapAn("B") | vtB == vtRandom)) {
-            PhuongAnB.setVisibility(View.INVISIBLE);
-        }
-        if (!(KiemTraDapAn("C") | vtC == vtRandom)) {
-            PhuongAnC.setVisibility(View.INVISIBLE);
-        }
-        if (!(KiemTraDapAn("D") | vtD == vtRandom)) {
-            PhuongAnD.setVisibility(View.INVISIBLE);
-        }
+    public void startDongHo()
+    {
+        dongHo=new DongHo(mDongHo,this);
+        dongHo.execute(n,temp);
     }
 
-    public void TroGiupKhanGia(View view) {
-        ImageView img = findViewById(R.id.imgTroGiupKhanGia);
-        img.setImageResource(R.drawable.loaitrogiupkhangia);
-        img.setEnabled(false);
+    public void stopDongHo()
+    {
+        dongHo.cancel(true);
+        temp=DongHo.k;
     }
-
-    public void TroGiupNguoiThan(View view) {
-        ImageView img = findViewById(R.id.imgTroGiupNguoiThan);
-        img.setImageResource(R.drawable.loaitrogiupgoidienthoai);
-        img.setEnabled(false);
-    }
-
 
 }
