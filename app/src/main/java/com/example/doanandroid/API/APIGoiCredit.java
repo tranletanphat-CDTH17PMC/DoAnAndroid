@@ -1,4 +1,4 @@
-package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh;
+package com.example.doanandroid.API;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class APIGoiCredit {
-    static String getAPIGoiCredit(){
+    public static String getAPIGoiCredit(){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String jSonGoiCredit = null;

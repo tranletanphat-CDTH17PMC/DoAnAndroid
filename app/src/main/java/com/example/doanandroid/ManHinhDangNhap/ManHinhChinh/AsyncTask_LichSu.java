@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.example.doanandroid.API.LuotChoiAPI;
 import com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_LichSu.LichSuChoi;
 
 public class AsyncTask_LichSu extends AsyncTask<String, String, String> {

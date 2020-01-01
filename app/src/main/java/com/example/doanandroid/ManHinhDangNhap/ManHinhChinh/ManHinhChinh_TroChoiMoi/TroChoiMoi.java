@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.doanandroid.Class.LinhVuc;
 import com.example.doanandroid.R;
@@ -16,12 +15,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TroChoiMoi extends AppCompatActivity {
-    ArrayList<LinhVuc> linhVucs;
+    ArrayList<LinhVuc> mLinhVuc;
     private String jSonLinhVuc;
     Button btnLv1, btnLv2, btnLv3, btnLv4;
     String LinhVucID1, LinhVucID2, LinhVucID3, LinhVucID4;
+    private ArrayList<String> mRandom;
+    Random random;
+    int vtht;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,23 +36,25 @@ public class TroChoiMoi extends AppCompatActivity {
         btnLv3 = findViewById(R.id.btnLinhVuc3);
         btnLv4 = findViewById(R.id.btnLinhVuc4);
 
+        mRandom = new ArrayList<>();
 
         Intent intent = getIntent();
         jSonLinhVuc = intent.getStringExtra("DanhSachLinhVuc");
 
         if (getListLinhVuc(jSonLinhVuc)) {
 
-            LinhVucID1 = linhVucs.get(0).getLinhVucId();
-            btnLv1.setText(linhVucs.get(0).getTenLinhVuc());
-
-            LinhVucID2 = linhVucs.get(1).getLinhVucId();
-            btnLv2.setText(linhVucs.get(1).getTenLinhVuc());
-
-            LinhVucID3 = linhVucs.get(2).getLinhVucId();
-            btnLv3.setText(linhVucs.get(2).getTenLinhVuc());
-
-            LinhVucID4 = linhVucs.get(3).getLinhVucId();
-            btnLv4.setText(linhVucs.get(3).getTenLinhVuc());
+            vtht = TronLinhVuc();
+            LinhVucID1 = mLinhVuc.get(vtht).getLinhVucId();
+            btnLv1.setText(mLinhVuc.get(vtht).getTenLinhVuc());
+            vtht = TronLinhVuc();
+            LinhVucID2 = mLinhVuc.get(vtht).getLinhVucId();
+            btnLv2.setText(mLinhVuc.get(vtht).getTenLinhVuc());
+            vtht = TronLinhVuc();
+            LinhVucID3 = mLinhVuc.get(vtht).getLinhVucId();
+            btnLv3.setText(mLinhVuc.get(vtht).getTenLinhVuc());
+            vtht = TronLinhVuc();
+            LinhVucID4 = mLinhVuc.get(vtht).getLinhVucId();
+            btnLv4.setText(mLinhVuc.get(vtht).getTenLinhVuc());
         } else {
             btnLv1.setText("API not run");
             btnLv2.setVisibility(View.INVISIBLE);
@@ -58,9 +63,37 @@ public class TroChoiMoi extends AppCompatActivity {
         }
     }
 
+    public int TronLinhVuc() {
+
+        random = new Random();
+        int vt;
+        if (mRandom.size() == 0) {
+            vt = random.nextInt(mLinhVuc.size());
+            mRandom.add(String.valueOf(vt));
+            return vt;
+        }
+        if (!(mRandom.size() == mLinhVuc.size())) {
+            do {
+                vt = random.nextInt(mLinhVuc.size());
+            } while (SoSanhSoVaMang(vt));
+            mRandom.add(String.valueOf(vt));
+            return vt;
+        }
+        return -1;
+    }
+
+    public boolean SoSanhSoVaMang(int vt) {
+        for (int i = 0; i < mRandom.size(); i++) {
+            if (String.valueOf(vt).equals(mRandom.get(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Boolean getListLinhVuc(String jSonString) {
         try {
-            linhVucs = new ArrayList<>();
+            mLinhVuc = new ArrayList<>();
             JSONObject jsonObject = new JSONObject(jSonString);
             JSONArray jr = jsonObject.getJSONArray("data");
 
@@ -70,7 +103,7 @@ public class TroChoiMoi extends AppCompatActivity {
                 LinhVuc thongTin = new LinhVuc();
                 thongTin.setTenLinhVuc(object.getString("ten_linh_vuc"));
                 thongTin.setLinhVucId(object.getString("id"));
-                linhVucs.add(thongTin);
+                mLinhVuc.add(thongTin);
             }
             return true;
         } catch (JSONException e) {
@@ -100,8 +133,8 @@ public class TroChoiMoi extends AppCompatActivity {
             }
         }
     }
-    public void Back(View view)
-    {
+
+    public void Back(View view) {
         this.finish();
     }
 }

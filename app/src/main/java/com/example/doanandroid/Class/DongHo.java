@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.widget.ProgressBar;
 
-import com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TraLoiCauHoi;
 
 import java.lang.ref.WeakReference;
 

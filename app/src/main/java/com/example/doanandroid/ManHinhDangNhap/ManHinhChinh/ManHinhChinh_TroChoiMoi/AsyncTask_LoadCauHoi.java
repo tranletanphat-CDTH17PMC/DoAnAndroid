@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.example.doanandroid.API.API_TroChoiMoi;
+
 public class AsyncTask_LoadCauHoi extends AsyncTask<String, String, String> {
     private Context context;
 

@@ -55,10 +55,10 @@ public class MuaCredit extends AppCompatActivity {
             tenGoiC.setText(mCredit.get(2).getTenGoi());
             tenGoiD.setText(mCredit.get(3).getTenGoi());
 
-            giaTienA.setText("$"+mCredit.get(0).getGiaTien());
-            giaTienB.setText("$"+mCredit.get(1).getGiaTien());
-            giaTienC.setText("$"+mCredit.get(2).getGiaTien());
-            giaTienD.setText("$"+mCredit.get(3).getGiaTien());
+            giaTienA.setText("$" + mCredit.get(0).getGiaTien());
+            giaTienB.setText("$" + mCredit.get(1).getGiaTien());
+            giaTienC.setText("$" + mCredit.get(2).getGiaTien());
+            giaTienD.setText("$" + mCredit.get(3).getGiaTien());
         } else {
             tenGoiA.setText("API not run");
             tenGoiB.setVisibility(View.INVISIBLE);
@@ -89,5 +89,9 @@ public class MuaCredit extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void Back(View view) {
+        this.finish();
     }
 }

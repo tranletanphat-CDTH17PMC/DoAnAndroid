@@ -8,51 +8,45 @@ android:orientation="vertical"
 android:weightSum="5">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
-        <LinearLayout
-            android:id="@+id/linear1"
-            android:layout_width="240dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:background="#03A9F4"
-            android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:paddingLeft="5dp"
-                android:paddingTop="10dp"
-                android:text="anh tuan"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"></TextView>
-        </LinearLayout>
+        <Button
+            android:background="@drawable/arrow"
+            android:id="@+id/btnBackLichSu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="Back" />
+
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/txtCredit"
+            android:background="@color/Sky" />
+
+        <TextView
+            android:id="@+id/txtTenTaiKhoan"
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/txtCredit"
+            android:gravity="center"
+            android:text="anh tuan"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
 
         <ImageView
             android:id="@+id/imgDiamond"
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/diamond"></ImageView>
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/diamond" />
 
         <TextView
-            android:layout_width="70dp"
+            android:id="@+id/txtCredit"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toStartOf="@+id/imgDiamond"
             android:layout_toLeftOf="@+id/imgDiamond"
-            android:layout_toRightOf="@+id/linear1"
             android:background="#FFC107"
             android:gravity="center"
             android:text="2000"
@@ -60,6 +54,7 @@ android:weightSum="5">
             android:textStyle="bold" />
 
     </RelativeLayout>
+
 
 <RelativeLayout
     android:layout_width="match_parent"

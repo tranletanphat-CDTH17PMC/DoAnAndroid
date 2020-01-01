@@ -17,6 +17,7 @@ public class CauHoi {
     private int vtB;
     private int vtC;
     private int vtD;
+    private int vtDA;
 
     public String getNoiDung() {
         return NoiDung;
@@ -84,35 +85,36 @@ public class CauHoi {
         CauD = this.PhuongAnD;
         a = r.nextInt(4);
         Tron(a, CauA);
-        setVtA(a);
         do {
             b = r.nextInt(4);
         } while (b == a);
         Tron(b, CauB);
-        setVtB(b);
         do {
             c = r.nextInt(4);
         } while (c == a || c == b);
         Tron(c, CauC);
-        setVtC(c);
         do {
             d = r.nextInt(4);
         } while (d == a || d == b || d == c);
         Tron(d, CauD);
-        setVtD(d);
 
         TimDapAn(a, b, c, d);
+
         Log.d("da", PhuongAnDung);
     }
 
     private void Tron(int vt, String CauTraLoi) {
         if (vt == 0) {
+            setVtA(vt);
             this.PhuongAnA = CauTraLoi;
         } else if (vt == 1) {
+            setVtB(vt);
             this.PhuongAnB = CauTraLoi;
         } else if (vt == 2) {
+            setVtC(vt);
             this.PhuongAnC = CauTraLoi;
         } else if (vt == 3) {
+            setVtD(vt);
             this.PhuongAnD = CauTraLoi;
         }
     }
@@ -120,12 +122,16 @@ public class CauHoi {
     private void TimDapAn(int a, int b, int c, int d) {
         if (this.PhuongAnDung.equals("A")) {
             LayDA(a);
+            setVtDA(a);
         } else if (this.PhuongAnDung.equals("B")) {
             LayDA(b);
+            setVtDA(b);
         } else if (this.PhuongAnDung.equals("C")) {
             LayDA(c);
+            setVtDA(c);
         } else if (this.PhuongAnDung.equals("D")) {
             LayDA(d);
+            setVtDA(d);
         }
     }
 
@@ -171,5 +177,13 @@ public class CauHoi {
 
     public void setVtD(int vtD) {
         this.vtD = vtD;
+    }
+
+    public int getVtDA() {
+        return vtDA;
+    }
+
+    public void setVtDA(int vtDA) {
+        this.vtDA = vtDA;
     }
 }

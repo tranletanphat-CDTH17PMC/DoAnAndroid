@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,13 +32,14 @@ public class TraLoiCauHoi extends AppCompatActivity {
     CauHoi cauHoi;
     private ArrayList<CauHoi> mCauHoi;
     private ArrayList<String> mRandom;
-    private TextView NoiDung, PhuongAnA, PhuongAnB, PhuongAnC, PhuongAnD;
-    private String chon = null;
-    private String PhuongAnDung = null;
+    private TextView NoiDung, PhuongAnA, PhuongAnB, PhuongAnC, PhuongAnD, DiemSo, CauHoiSo;
+    private int diem = 0;
+    private int soCau = 1;
+    private boolean doiCauHoi = false;
     private int vtht;
     private Random random;
-    int n=999;
-    int temp=0;
+    int n = 999;
+    int temp = 0;
     DongHo dongHo;
     ProgressBar mDongHo;
 
@@ -44,13 +48,18 @@ public class TraLoiCauHoi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_hien_thi_cau_hoi);
 
-        mDongHo=findViewById(R.id.ProBarDongHo);
+        mDongHo = findViewById(R.id.ProBarDongHo);
         NoiDung = findViewById(R.id.txtNoiDung);
+
+        DiemSo = findViewById(R.id.txtDiemSo);
+
+        CauHoiSo = findViewById(R.id.txtCauHoiSo);
+
         PhuongAnA = findViewById(R.id.txtPhuongAnA);
         PhuongAnB = findViewById(R.id.txtPhuongAnB);
         PhuongAnC = findViewById(R.id.txtPhuongAnC);
         PhuongAnD = findViewById(R.id.txtPhuongAnD);
-        dongHo=new DongHo(mDongHo,this);
+        dongHo = new DongHo(mDongHo, this);
         //
         mRandom = new ArrayList<>();
         Intent intent = getIntent();
@@ -88,8 +97,21 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void HienThiCauHoi() {
-        temp=0;
+        temp = 0;
+        PhuongAnA.setVisibility(View.VISIBLE);
+        PhuongAnB.setVisibility(View.VISIBLE);
+        PhuongAnC.setVisibility(View.VISIBLE);
+        PhuongAnD.setVisibility(View.VISIBLE);
+        if (doiCauHoi) {
+            CauHoiSo.setText(soCau + "");
+            DiemSo.setText("Điểm số: " + diem);
+        } else {
+            CauHoiSo.setText(soCau + "");
+            DiemSo.setText("Điểm số: " + diem);
 
+            diem = diem + 10;
+            soCau = soCau + 1;
+        }
         dongHo.cancel(true);
         startDongHo();
         if (getDSCauHoi(jSonDSCauHoi)) {
@@ -106,10 +128,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 PhuongAnB.setText(cauHoi.getPhuongAnB());
                 PhuongAnC.setText(cauHoi.getPhuongAnC());
                 PhuongAnD.setText(cauHoi.getPhuongAnD());
-                PhuongAnDung = cauHoi.getPhuongAnDung();
-
             } else {
-                Toast.makeText(this, "Hết câu hỏi rồi ba", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Bạn đã hoàn thành lĩnh vực này", Toast.LENGTH_SHORT).show();
+                stopDongHo();
+                this.finish();
             }
         } else {
             PhuongAnA.setText("API not run");
@@ -144,14 +166,19 @@ public class TraLoiCauHoi extends AppCompatActivity {
         }
     }
 
+    public void LuaChon(boolean th) {
+        if (th) {
+            new CountDownTimer(1000, 100) {
 
-    public void ChonDapAn(View view) {
-        switch (view.getId()) {
-            case R.id.txtPhuongAnA: {
-                final String DapAn = "A";
-                PhuongAnA.setBackgroundResource(R.drawable.mau_chon);
-                if (KiemTraDapAn(DapAn)) {
-                    new CountDownTimer(1000, 100) {
+                @Override
+                public void onTick(long l) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    HienThiDapAnDung();
+                    new CountDownTimer(500, 100) {
 
                         @Override
                         public void onTick(long l) {
@@ -160,26 +187,31 @@ public class TraLoiCauHoi extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
-                            HienThiDapAnDung();
-                            new CountDownTimer(500, 100) {
-
-                                @Override
-                                public void onTick(long l) {
-
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    HienThiCauHoi();
-                                }
-                            }.start();
+                            HienThiCauHoi();
                         }
                     }.start();
+                }
+            }.start();
+        } else {
+            Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
+            HienThiDapAnDung();
+            stopDongHo();
+            finish();
+
+        }
+    }
+
+    public void ChonDapAn(View view) {
+        boolean th = true;
+        switch (view.getId()) {
+            case R.id.txtPhuongAnA: {
+                final String DapAn = "A";
+                PhuongAnA.setBackgroundResource(R.drawable.mau_chon);
+                if (KiemTraDapAn(DapAn)) {
+                    LuaChon(th);
                 } else {
-                    Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
-                    HienThiDapAnDung();
-                    stopDongHo();
-                    finish();
+                    th = false;
+                    LuaChon(th);
                 }
                 break;
             }
@@ -188,35 +220,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 final String DapAn = "B";
                 PhuongAnB.setBackgroundResource(R.drawable.mau_chon);
                 if (KiemTraDapAn(DapAn)) {
-                    new CountDownTimer(1000, 100) {
-
-                        @Override
-                        public void onTick(long l) {
-
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            HienThiDapAnDung();
-                            new CountDownTimer(500, 100) {
-
-                                @Override
-                                public void onTick(long l) {
-
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    HienThiCauHoi();
-                                }
-                            }.start();
-                        }
-                    }.start();
+                    LuaChon(th);
                 } else {
-                    Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
-                    HienThiDapAnDung();
-                    stopDongHo();
-                    finish();
+                    th = false;
+                    LuaChon(th);
                 }
                 break;
             }
@@ -224,35 +231,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 final String DapAn = "C";
                 PhuongAnC.setBackgroundResource(R.drawable.mau_chon);
                 if (KiemTraDapAn(DapAn)) {
-                    new CountDownTimer(1000, 100) {
-
-                        @Override
-                        public void onTick(long l) {
-
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            HienThiDapAnDung();
-                            new CountDownTimer(500, 100) {
-
-                                @Override
-                                public void onTick(long l) {
-
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    HienThiCauHoi();
-                                }
-                            }.start();
-                        }
-                    }.start();
+                    LuaChon(th);
                 } else {
-                    Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
-                    HienThiDapAnDung();
-                    stopDongHo();
-                    finish();
+                    th = false;
+                    LuaChon(th);
                 }
                 break;
             }
@@ -260,35 +242,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 final String DapAn = "D";
                 PhuongAnD.setBackgroundResource(R.drawable.mau_chon);
                 if (KiemTraDapAn(DapAn)) {
-                    new CountDownTimer(1000, 100) {
-
-                        @Override
-                        public void onTick(long l) {
-
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            HienThiDapAnDung();
-                            new CountDownTimer(500, 100) {
-
-                                @Override
-                                public void onTick(long l) {
-
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    HienThiCauHoi();
-                                }
-                            }.start();
-                        }
-                    }.start();
+                    LuaChon(th);
                 } else {
-                    Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
-                    HienThiDapAnDung();
-                    stopDongHo();
-                    finish();
+                    th = false;
+                    LuaChon(th);
                 }
                 break;
             }
@@ -314,21 +271,21 @@ public class TraLoiCauHoi extends AppCompatActivity {
             PhuongAnD.setBackgroundResource(R.drawable.mau_dung);
         }
     }
-    public void pause(View view)
-    {
+
+    public void pause(View view) {
         stopDongHo();
-        final Dialog pause=new Dialog(this);
+        final Dialog pause = new Dialog(this);
         pause.setContentView(R.layout.pause);
         pause.setCanceledOnTouchOutside(false);
-        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-        Button btnTiepTuc=pause.findViewById(R.id.btnTiepTuc);
+        pause.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        Button btnTiepTuc = pause.findViewById(R.id.btnTiepTuc);
         btnTiepTuc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startDongHo();
                 pause.dismiss();
             }
         });
-        Button btnThoat=pause.findViewById(R.id.btnThoat);
+        Button btnThoat = pause.findViewById(R.id.btnThoat);
         btnThoat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
@@ -336,16 +293,99 @@ public class TraLoiCauHoi extends AppCompatActivity {
         });
         pause.show();
     }
-    public void startDongHo()
-    {
-        dongHo=new DongHo(mDongHo,this);
-        dongHo.execute(n,temp);
+
+    public void startDongHo() {
+        dongHo = new DongHo(mDongHo, this);
+        dongHo.execute(n, temp);
     }
 
-    public void stopDongHo()
-    {
+    public void stopDongHo() {
         dongHo.cancel(true);
-        temp=DongHo.k;
+        temp = DongHo.k;
     }
 
+    public void TroGiup5050(View view) {
+        ImageView img = findViewById(R.id.imgTroGiup5050);
+        img.setImageResource(R.drawable.loaitrogiup5050);
+        img.setEnabled(false);
+        Random r = new Random();
+        int vtRandom1, vtRandom2;
+        int vtda = cauHoi.getVtDA();
+        do {
+            vtRandom1 = r.nextInt(4);
+        } while (vtRandom1 == vtda);
+        do {
+            vtRandom2 = r.nextInt(4);
+        } while (vtRandom2 == vtRandom1 || vtRandom2 == vtda);
+        Log.d("rd1", vtRandom1 + "");
+        Log.d("rd2", vtRandom2 + "");
+        int vtA = cauHoi.getVtA();
+        int vtB = cauHoi.getVtB();
+        int vtC = cauHoi.getVtC();
+        int vtD = cauHoi.getVtD();
+        if (vtA == vtRandom1 || vtA == vtRandom2) {
+            PhuongAnA.setVisibility(View.INVISIBLE);
+        }
+        if (vtB == vtRandom1 || vtB == vtRandom2) {
+            PhuongAnB.setVisibility(View.INVISIBLE);
+        }
+        if (vtC == vtRandom1 || vtC == vtRandom2) {
+            PhuongAnC.setVisibility(View.INVISIBLE);
+        }
+        if (vtD == vtRandom1 || vtD == vtRandom2) {
+            PhuongAnD.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    public void TroGiupDoiCauHoi(View view) {
+        doiCauHoi = true;
+        HienThiCauHoi();
+        ImageView img = findViewById(R.id.imgTroGiupDoiCauHoi);
+        img.setImageResource(R.drawable.loaidoicauhoi);
+        img.setEnabled(false);
+    }
+
+    public void TroGiupKhanGia(View view) {
+        int KhanGiaA;
+        int KhanGiaB;
+        int KhanGiaC;
+        int KhanGiaD;
+        ImageView img = findViewById(R.id.imgTroGiupKhanGia);
+        img.setImageResource(R.drawable.loaitrogiupkhangia);
+        img.setEnabled(false);
+        int PTConLai = 100;
+        Random r = new Random();
+        do {
+            KhanGiaA = r.nextInt(PTConLai);
+        } while (KhanGiaA > 40 || KhanGiaA < 10);
+        PTConLai -= KhanGiaA;
+        do {
+            KhanGiaB = r.nextInt(PTConLai);
+        } while (KhanGiaB > 40 || KhanGiaB < 10);
+        PTConLai -= KhanGiaB;
+        do {
+            KhanGiaC = r.nextInt(PTConLai);
+        } while (KhanGiaC > 40 || KhanGiaC < 10);
+        PTConLai -= KhanGiaC;
+        KhanGiaD = PTConLai;
+        Log.d("ptA", KhanGiaA + "");
+        Log.d("ptB", KhanGiaB + "");
+        Log.d("ptC", KhanGiaC + "");
+        Log.d("ptD", KhanGiaD + "");
+        final Dialog TroGiupKhanGia = new Dialog(this);
+        TroGiupKhanGia.setContentView(R.layout.man_hinh_tro_giup_khan_gia);
+        TroGiupKhanGia.setCanceledOnTouchOutside(false);
+        TroGiupKhanGia.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+        Button btnTiepTuc = TroGiupKhanGia.findViewById(R.id.btnCamOn);
+        btnTiepTuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TroGiupKhanGia.dismiss();
+            }
+        });
+        TroGiupKhanGia.show();
+
+    }
 }

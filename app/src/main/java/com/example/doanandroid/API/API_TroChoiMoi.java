@@ -1,4 +1,4 @@
-package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi;
+package com.example.doanandroid.API;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class API_TroChoiMoi {
-    static String getDSCauHoi(String linhVucId) {
+     public static String getDSCauHoi(String linhVucId) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String jSonCauHoi = null;
