@@ -38,7 +38,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
     int temp=0;
     DongHo dongHo;
     ProgressBar mDongHo;
-    public static String kq="start";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +89,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
 
     public void HienThiCauHoi() {
         temp=0;
-        kq="start";
+
         dongHo.cancel(true);
         startDongHo();
         if (getDSCauHoi(jSonDSCauHoi)) {
@@ -178,6 +178,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 } else {
                     Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
                     HienThiDapAnDung();
+                    stopDongHo();
                     finish();
                 }
                 break;
@@ -214,6 +215,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 } else {
                     Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
                     HienThiDapAnDung();
+                    stopDongHo();
                     finish();
                 }
                 break;
@@ -249,6 +251,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 } else {
                     Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
                     HienThiDapAnDung();
+                    stopDongHo();
                     finish();
                 }
                 break;
@@ -284,6 +287,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 } else {
                     Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
                     HienThiDapAnDung();
+                    stopDongHo();
                     finish();
                 }
                 break;
