@@ -3,6 +3,7 @@ package com.example.doanandroid.ManHinhDangNhap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class AsyncTask_DangNhap extends AsyncTask<String, String, String> {
         if (s != null) {
             Intent intent = new Intent(context, ManHinhChinh.class);
             intent.putExtra("ThongTinNguoiChoi", s);
+
             Activity activity = (Activity) context;
             activity.startActivity(intent);
         } else {
