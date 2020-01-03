@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import com.example.doanandroid.Class.CauHoi;
 import com.example.doanandroid.Class.DongHo;
 import com.example.doanandroid.R;
+import com.github.mikephil.charting.charts.BarChart;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,13 +35,15 @@ public class TraLoiCauHoi extends AppCompatActivity {
     private TextView NoiDung, PhuongAnA, PhuongAnB, PhuongAnC, PhuongAnD, DiemSo, CauHoiSo;
     private int diem = 0;
     private int soCau = 1;
-    private boolean doiCauHoi = false;
+    private boolean DoiCauHoi = true;
+    private boolean TroGiup50 = true;
     private int vtht;
     private Random random;
     int n = 999;
     int temp = 0;
     DongHo dongHo;
     ProgressBar mDongHo;
+    BarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
         PhuongAnB.setVisibility(View.VISIBLE);
         PhuongAnC.setVisibility(View.VISIBLE);
         PhuongAnD.setVisibility(View.VISIBLE);
-        if (doiCauHoi) {
+        if (DoiCauHoi) {
             CauHoiSo.setText(soCau + "");
             DiemSo.setText("Điểm số: " + diem);
         } else {
@@ -194,9 +196,33 @@ public class TraLoiCauHoi extends AppCompatActivity {
             }.start();
         } else {
             Toast.makeText(TraLoiCauHoi.this, "Bạn đã trả lời sai", Toast.LENGTH_SHORT).show();
-            HienThiDapAnDung();
-            stopDongHo();
-            finish();
+            new CountDownTimer(1000, 100) {
+
+                @Override
+                public void onTick(long l) {
+
+                }
+
+                @Override
+                public void onFinish() {
+
+                    HienThiDapAnDung();
+                    new CountDownTimer(500, 100) {
+
+                        @Override
+                        public void onTick(long l) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                            stopDongHo();
+                            finish();
+                        }
+                    }.start();
+                }
+            }.start();
 
         }
     }
@@ -305,6 +331,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void TroGiup5050(View view) {
+        TroGiup50 = false;
         ImageView img = findViewById(R.id.imgTroGiup5050);
         img.setImageResource(R.drawable.loaitrogiup5050);
         img.setEnabled(false);
@@ -339,7 +366,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void TroGiupDoiCauHoi(View view) {
-        doiCauHoi = true;
+        DoiCauHoi = false;
         HienThiCauHoi();
         ImageView img = findViewById(R.id.imgTroGiupDoiCauHoi);
         img.setImageResource(R.drawable.loaidoicauhoi);
@@ -347,45 +374,15 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void TroGiupKhanGia(View view) {
-        int KhanGiaA;
-        int KhanGiaB;
-        int KhanGiaC;
-        int KhanGiaD;
+        Intent intent = new Intent(this, TroGiupKhanGia.class);
+
         ImageView img = findViewById(R.id.imgTroGiupKhanGia);
         img.setImageResource(R.drawable.loaitrogiupkhangia);
         img.setEnabled(false);
-        int PTConLai = 100;
-        Random r = new Random();
-        do {
-            KhanGiaA = r.nextInt(PTConLai);
-        } while (KhanGiaA > 40 || KhanGiaA < 10);
-        PTConLai -= KhanGiaA;
-        do {
-            KhanGiaB = r.nextInt(PTConLai);
-        } while (KhanGiaB > 40 || KhanGiaB < 10);
-        PTConLai -= KhanGiaB;
-        do {
-            KhanGiaC = r.nextInt(PTConLai);
-        } while (KhanGiaC > 40 || KhanGiaC < 10);
-        PTConLai -= KhanGiaC;
-        KhanGiaD = PTConLai;
-        Log.d("ptA", KhanGiaA + "");
-        Log.d("ptB", KhanGiaB + "");
-        Log.d("ptC", KhanGiaC + "");
-        Log.d("ptD", KhanGiaD + "");
-        final Dialog TroGiupKhanGia = new Dialog(this);
-        TroGiupKhanGia.setContentView(R.layout.man_hinh_tro_giup_khan_gia);
-        TroGiupKhanGia.setCanceledOnTouchOutside(false);
-        TroGiupKhanGia.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
-        Button btnTiepTuc = TroGiupKhanGia.findViewById(R.id.btnCamOn);
-        btnTiepTuc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TroGiupKhanGia.dismiss();
-            }
-        });
-        TroGiupKhanGia.show();
-
+        intent.putExtra("TroGiup50", TroGiup50);
+        intent.putExtra("DapAnDung", cauHoi.getPhuongAnDung());
+        startActivity(intent);
     }
+
 }

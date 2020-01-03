@@ -29,8 +29,8 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_gravity="center"
             android:layout_height="50dp"
+            android:layout_gravity="center"
             android:hint="Email"></EditText>
 
         <Button
@@ -40,9 +40,18 @@
             android:background="#03A9F4"
             android:text="Lấy lại mật khẩu"
             android:textColor="#FFFFFF"
-            android:textColorHint="@android:color/white">
+            android:textColorHint="@android:color/white" />
 
-        </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#03A9F4"
+            android:text="Trở về"
+            android:onClick="Back"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@android:color/white" />
     </LinearLayout>
 
 </LinearLayout>

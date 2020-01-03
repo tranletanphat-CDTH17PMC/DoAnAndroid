@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 import java.lang.ref.WeakReference;
@@ -38,6 +39,7 @@ public class DongHo extends AsyncTask<Integer, Integer, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        Toast.makeText(context, "Hết giờ", Toast.LENGTH_SHORT).show();
         Activity activity = (Activity) context;
         activity.finish();
     }

@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/imgAnhDaiDien"
-        android:layout_marginTop="10dp"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/user" />
 
@@ -55,8 +55,9 @@
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#FFEB3B"
+            android:onClick="QuenMK"
             android:text="Quên Mật Khẩu"
-            android:textColor="#FFFFFF"></Button>
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnDangKi"
@@ -64,8 +65,9 @@
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#FF5722"
+            android:onClick="DangKy"
             android:text="Đăng Kí"
-            android:textColor="#FFFFFF"></Button>
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
@@ -95,10 +97,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="10dp"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 android:text="Đăng nhập với Facebook"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -121,10 +123,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="10dp"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 android:text="Đăng nhập với Google"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>

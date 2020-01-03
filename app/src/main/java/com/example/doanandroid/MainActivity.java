@@ -2,11 +2,14 @@ package com.example.doanandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.doanandroid.ManHinhDangNhap.AsyncTask_DangNhap;
+import com.example.doanandroid.ManHinhDangNhap.DangKy;
+import com.example.doanandroid.ManHinhDangNhap.QuenMatKhau;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,5 +33,15 @@ public class MainActivity extends AppCompatActivity {
         //Xác thực tạm
         new AsyncTask_DangNhap(sTK, this).execute();
 
+    }
+
+    public void DangKy(View view) {
+        Intent intent = new Intent(this, DangKy.class);
+        startActivity(intent);
+    }
+    public void QuenMK(View view)
+    {
+        Intent intent = new Intent(this, QuenMatKhau.class);
+        startActivity(intent);
     }
 }

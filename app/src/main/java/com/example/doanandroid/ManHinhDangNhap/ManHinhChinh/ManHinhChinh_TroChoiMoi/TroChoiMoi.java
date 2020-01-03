@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.doanandroid.Class.LinhVuc;
 import com.example.doanandroid.R;
@@ -25,6 +26,7 @@ public class TroChoiMoi extends AppCompatActivity {
     private ArrayList<String> mRandom;
     Random random;
     int vtht;
+    int th1 = 0, th2 = 0, th3 = 0, th4 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,19 +118,39 @@ public class TroChoiMoi extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.btnLinhVuc1: {
-                new AsyncTask_LoadCauHoi(this).execute(LinhVucID1);
+                if (th1 == 0) {
+                    th1 = -1;
+                    new AsyncTask_LoadCauHoi(this).execute(LinhVucID1);
+                } else if (th1 == -1) {
+                    Toast.makeText(this, "Bạn đã hoàn thành lĩnh vực này", Toast.LENGTH_SHORT).show();
+                }
                 break;
             }
             case R.id.btnLinhVuc2: {
-                new AsyncTask_LoadCauHoi(this).execute(LinhVucID2);
+                if (th2 == 0) {
+                    th2 = -2;
+                    new AsyncTask_LoadCauHoi(this).execute(LinhVucID2);
+                } else if (th2 == -2) {
+                    Toast.makeText(this, "Bạn đã hoàn thành lĩnh vực này", Toast.LENGTH_SHORT).show();
+                }
                 break;
             }
             case R.id.btnLinhVuc3: {
-                new AsyncTask_LoadCauHoi(this).execute(LinhVucID3);
+                if (th3 == 0) {
+                    th3 = -3;
+                    new AsyncTask_LoadCauHoi(this).execute(LinhVucID3);
+                } else if (th3 == -3) {
+                    Toast.makeText(this, "Bạn đã hoàn thành lĩnh vực này", Toast.LENGTH_SHORT).show();
+                }
                 break;
             }
             case R.id.btnLinhVuc4: {
-                new AsyncTask_LoadCauHoi(this).execute(LinhVucID4);
+                if (th4 == 0) {
+                    th4 = -4;
+                    new AsyncTask_LoadCauHoi(this).execute(LinhVucID4);
+                } else if (th4 == -4) {
+                    Toast.makeText(this, "Bạn đã hoàn thành lĩnh vực này", Toast.LENGTH_SHORT).show();
+                }
                 break;
             }
         }

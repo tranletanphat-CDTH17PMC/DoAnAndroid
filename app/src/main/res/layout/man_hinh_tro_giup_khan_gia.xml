@@ -1,100 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_gravity="center"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    android:weightSum="4">
-
-    <LinearLayout
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="500dp">
 
-        <TextView
-            android:id="@+id/tvA"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="A" />
-
-        <ProgressBar
-            android:id="@+id/proBarA"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressTint="@color/colorPrimary" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvB"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="B" />
-
-        <ProgressBar
-            android:id="@+id/proBarB"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressTint="@color/colorPrimary" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvC"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="C" />
-
-        <ProgressBar
-            android:id="@+id/proBarC"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressTint="@color/colorPrimary" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvD"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="D" />
-
-        <ProgressBar
-            android:id="@+id/proBarD"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressTint="@color/colorPrimary" />
-    </LinearLayout>
+    </com.github.mikephil.charting.charts.BarChart>
 
     <Button
-        android:id="@+id/btnCamOn"
+        android:id="@+id/btnXem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cảm ơn nhen" />
+        android:onClick="HienThi"
+        android:text="Xem trợ bình chọn" />
+
+    <Button
+        android:id="@+id/btnTroVe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trở về"
+        android:onClick="Back"/>
 </LinearLayout>

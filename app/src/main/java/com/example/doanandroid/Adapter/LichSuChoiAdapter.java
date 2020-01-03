@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanandroid.Class.LuotChoi;
-import com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_LichSu.LichSuChoi;
 import com.example.doanandroid.R;
 
 import java.util.ArrayList;
@@ -22,6 +21,7 @@ public class LichSuChoiAdapter extends RecyclerView.Adapter<LichSuChoiAdapter.Li
     private final ArrayList<LuotChoi> mLuotChoi;
     private LayoutInflater mInflater;
     private Context context;
+
     public LichSuChoiAdapter(Context context, ArrayList<LuotChoi> mLuotChoi) {
         this.mLuotChoi = mLuotChoi;
         this.mInflater = LayoutInflater.from(context);
@@ -67,6 +67,7 @@ public class LichSuChoiAdapter extends RecyclerView.Adapter<LichSuChoiAdapter.Li
         @Override
         public void onClick(View v) {
             LuotChoi currentLuotChoi = mLuotChoi.get(getAdapterPosition());
+            String NguoiChoiID = currentLuotChoi.getID();
             Toast.makeText(context, "Ahihi", Toast.LENGTH_SHORT).show();
         }
     }
