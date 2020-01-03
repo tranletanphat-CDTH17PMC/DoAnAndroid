@@ -44,6 +44,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
     DongHo dongHo;
     ProgressBar mDongHo;
     BarChart barChart;
+    int vtRandom1,vtRandom2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void HienThiCauHoi() {
+        TroGiup50=true;
         temp = 0;
         PhuongAnA.setVisibility(View.VISIBLE);
         PhuongAnB.setVisibility(View.VISIBLE);
@@ -330,13 +332,13 @@ public class TraLoiCauHoi extends AppCompatActivity {
         temp = DongHo.k;
     }
 
+
     public void TroGiup5050(View view) {
         TroGiup50 = false;
         ImageView img = findViewById(R.id.imgTroGiup5050);
         img.setImageResource(R.drawable.loaitrogiup5050);
         img.setEnabled(false);
         Random r = new Random();
-        int vtRandom1, vtRandom2;
         int vtda = cauHoi.getVtDA();
         do {
             vtRandom1 = r.nextInt(4);
@@ -374,14 +376,21 @@ public class TraLoiCauHoi extends AppCompatActivity {
     }
 
     public void TroGiupKhanGia(View view) {
+        stopDongHo();
         Intent intent = new Intent(this, TroGiupKhanGia.class);
 
         ImageView img = findViewById(R.id.imgTroGiupKhanGia);
         img.setImageResource(R.drawable.loaitrogiupkhangia);
         img.setEnabled(false);
 
+
         intent.putExtra("TroGiup50", TroGiup50);
-        intent.putExtra("DapAnDung", cauHoi.getPhuongAnDung());
+        if(TroGiup50==false)
+        {
+            intent.putExtra("DaXoa1", vtRandom1);
+            intent.putExtra("DaXoa2",vtRandom2);
+        }
+
         startActivity(intent);
     }
 
