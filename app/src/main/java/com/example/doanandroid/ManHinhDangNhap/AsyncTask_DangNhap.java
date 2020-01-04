@@ -71,7 +71,7 @@ public class AsyncTask_DangNhap extends AsyncTask<String, String, String> {
         } else {
 //            Toast.makeText(activity,s.toString(),Toast.LENGTH_SHORT).show();
             Activity activity = (Activity) context;
-            Toast.makeText(activity, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Chuỗi rỗng", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -80,7 +80,6 @@ public class AsyncTask_DangNhap extends AsyncTask<String, String, String> {
             nguoiChoi = new ArrayList<>();
             JSONObject root = new JSONObject(jSonString);
             JSONArray jr = root.getJSONArray("data");
-            ;
             int num = jr.length();
             for (int i = 0; i < num; i++) {
                 JSONObject jb = jr.getJSONObject(i);
@@ -89,6 +88,7 @@ public class AsyncTask_DangNhap extends AsyncTask<String, String, String> {
                 thongTin.setTenDangNhap(jb.getString("ten_dang_nhap"));
                 thongTin.setMatKhau(jb.getString("mat_khau"));
                 thongTin.setEmail(jb.getString("email"));
+                thongTin.setMatKhau(jb.getString("mat_khau"));
                 thongTin.setHinhDaiDien(jb.getString("hinh_dai_dien"));
                 thongTin.setDiemCaoNhat(jb.getString("diem_cao_nhat"));
                 thongTin.setCredit(jb.getString("credit"));

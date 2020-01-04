@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.doanandroid.Class.AmNhac;
 import com.example.doanandroid.ManHinhDangNhap.AsyncTask_DangNhap;
@@ -44,10 +45,18 @@ public class MainActivity extends AppCompatActivity {
         sTK = txtTK.getText().toString();
         sMK = txtMK.getText().toString();
         //Xác thực tạm
-        mediaPlayer.stop();
-        mediaPlayer = MediaPlayer.create(this, mNhac.get(1).getFile());
-        mediaPlayer.start();
-        new AsyncTask_DangNhap(sTK, sMK, this).execute();
+
+        if (sTK.isEmpty() || sMK.isEmpty()) {
+            Toast.makeText(this, "Tài khoản hoặc mật khẩu không được để trống", Toast.LENGTH_SHORT).show();
+        } else if (sMK.length() < 6) {
+            Toast.makeText(this, "Đ", Toast.LENGTH_SHORT).show();
+        } else {
+            mediaPlayer.stop();
+            mediaPlayer = MediaPlayer.create(this, mNhac.get(1).getFile());
+            mediaPlayer.start();
+            new AsyncTask_DangNhap(sTK, sMK, this).execute();
+        }
+
 
     }
 

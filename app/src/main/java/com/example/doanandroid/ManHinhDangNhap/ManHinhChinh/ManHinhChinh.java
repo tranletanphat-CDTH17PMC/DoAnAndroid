@@ -26,6 +26,7 @@ public class ManHinhChinh extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String ten, credit, id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +35,9 @@ public class ManHinhChinh extends AppCompatActivity {
         txtCredit = findViewById(R.id.txtCredit);
 
         sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
-        ten = sharedPreferences.getString("ten_dang_nhap","");
-        credit = sharedPreferences.getString("credit","");
-        id = sharedPreferences.getString("id","");
+        ten = sharedPreferences.getString("ten_dang_nhap", "");
+        credit = sharedPreferences.getString("credit", "");
+        id = sharedPreferences.getString("id", "");
         txtTenTaiKhoan.setText(ten);
         txtCredit.setText(credit);
 //        if (getThongTinNguoiChoi(thongTinNguoiChoi)) {
@@ -95,6 +96,11 @@ public class ManHinhChinh extends AppCompatActivity {
             }
             case R.id.btnLichSuChoi: {
                 new AsyncTask_LichSu(this).execute(id);
+                break;
+            }
+            case R.id.btnBangXepHang: {
+                new AsyncTask_XepHang(this).execute();
+                break;
             }
 
         }

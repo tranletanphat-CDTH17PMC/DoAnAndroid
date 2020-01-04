@@ -23,7 +23,8 @@ public class MuaCredit extends AppCompatActivity {
     private ArrayList<GoiCredit> mCredit;
     private String jSonGoiCredit;
     private TextView tenGoiA, tenGoiB, tenGoiC, tenGoiD, giaTienA, giaTienB, giaTienC, giaTienD;
-    private TextView txtTen, txtCredit;
+    private TextView txtTen, txtCredit, CreditA, CreditB, CreditC, CreditD;
+    String ten, credit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,6 @@ public class MuaCredit extends AppCompatActivity {
         txtTen = findViewById(R.id.txtTenTaiKhoan);
         txtCredit = findViewById(R.id.txtCredit);
 
-        String ten, credit;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
         sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
@@ -47,6 +47,12 @@ public class MuaCredit extends AppCompatActivity {
         tenGoiB = findViewById(R.id.txtGoiB);
         tenGoiC = findViewById(R.id.txtGoiC);
         tenGoiD = findViewById(R.id.txtGoiD);
+
+        CreditA = findViewById(R.id.txtCreditA);
+        CreditB = findViewById(R.id.txtCreditB);
+        CreditC = findViewById(R.id.txtCreditC);
+        CreditD = findViewById(R.id.txtCreditD);
+
         giaTienA = findViewById(R.id.txtGiaTienA);
         giaTienB = findViewById(R.id.txtGiaTienB);
         giaTienC = findViewById(R.id.txtGiaTienC);
@@ -70,6 +76,11 @@ public class MuaCredit extends AppCompatActivity {
             tenGoiC.setText(mCredit.get(2).getTenGoi());
             tenGoiD.setText(mCredit.get(3).getTenGoi());
 
+            CreditA.setText(mCredit.get(0).getCredit());
+            CreditB.setText(mCredit.get(1).getCredit());
+            CreditC.setText(mCredit.get(2).getCredit());
+            CreditD.setText(mCredit.get(3).getCredit());
+
             giaTienA.setText("$" + mCredit.get(0).getGiaTien());
             giaTienB.setText("$" + mCredit.get(1).getGiaTien());
             giaTienC.setText("$" + mCredit.get(2).getGiaTien());
@@ -79,6 +90,11 @@ public class MuaCredit extends AppCompatActivity {
             tenGoiB.setVisibility(View.INVISIBLE);
             tenGoiC.setVisibility(View.INVISIBLE);
             tenGoiD.setVisibility(View.INVISIBLE);
+            CreditA.setText("API not run");
+            CreditB.setVisibility(View.INVISIBLE);
+            CreditC.setVisibility(View.INVISIBLE);
+            CreditD.setVisibility(View.INVISIBLE);
+
             giaTienA.setText("API not run");
             giaTienB.setVisibility(View.INVISIBLE);
             giaTienC.setVisibility(View.INVISIBLE);
@@ -96,6 +112,7 @@ public class MuaCredit extends AppCompatActivity {
                 JSONObject jb = jr.getJSONObject(i);
                 GoiCredit thongTin = new GoiCredit();
                 thongTin.setTenGoi(jb.getString("ten_goi"));
+                thongTin.setCredit(jb.getString("credit"));
                 thongTin.setGiaTien(jb.getString("so_tien"));
                 mCredit.add(thongTin);
             }
@@ -103,6 +120,37 @@ public class MuaCredit extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public void MuaCredit(View view) {
+        int currentCredit = Integer.valueOf(credit);
+        switch (view.getId()) {
+            case R.id.imgGoiA:
+                int cGoiA = Integer.valueOf(mCredit.get(0).getCredit());
+                int sumCreditA = currentCredit + cGoiA;
+                credit = String.valueOf(sumCreditA);
+                txtCredit.setText(credit);
+                break;
+            case R.id.imgGoiB:
+
+                int cGoiB = Integer.valueOf(mCredit.get(1).getCredit());
+                int sumCreditB = currentCredit + cGoiB;
+                credit = String.valueOf(sumCreditB);
+                txtCredit.setText(credit);
+                break;
+            case R.id.imgGoiC:
+                int cGoiC = Integer.valueOf(mCredit.get(2).getCredit());
+                int sumCreditC = currentCredit + cGoiC;
+                credit = String.valueOf(sumCreditC);
+                txtCredit.setText(credit);
+                break;
+            case R.id.imgGoiD:
+                int cGoiD = Integer.valueOf(mCredit.get(3).getCredit());
+                int sumCreditD = currentCredit + cGoiD;
+                credit = String.valueOf(sumCreditD);
+                txtCredit.setText(credit);
+                break;
         }
     }
 

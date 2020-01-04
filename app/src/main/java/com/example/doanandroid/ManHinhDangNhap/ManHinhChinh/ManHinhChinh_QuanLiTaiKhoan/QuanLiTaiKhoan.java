@@ -57,28 +57,4 @@ public class QuanLiTaiKhoan extends AppCompatActivity {
         this.finish();
     }
 
-    private Boolean getThongTinNguoiChoi(String jSonString) {
-        try {
-            nguoiChoi = new ArrayList();
-            JSONObject root = new JSONObject(jSonString);
-            JSONArray jr = root.getJSONArray("data");
-            int num = jr.length();
-            for (int i = 0; i < num; i++) {
-                JSONObject jb = jr.getJSONObject(i);
-                NguoiChoi thongTin = new NguoiChoi();
-                thongTin.setTenDangNhap(jb.getString("ten_dang_nhap"));
-                thongTin.setMatKhau(jb.getString("mat_khau"));
-                thongTin.setEmail(jb.getString("email"));
-                thongTin.setHinhDaiDien(jb.getString("hinh_dai_dien"));
-                thongTin.setDiemCaoNhat(jb.getString("diem_cao_nhat"));
-                thongTin.setCredit(jb.getString("credit"));
-                nguoiChoi.add(thongTin);
-                return true;
-            }
-            return true;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

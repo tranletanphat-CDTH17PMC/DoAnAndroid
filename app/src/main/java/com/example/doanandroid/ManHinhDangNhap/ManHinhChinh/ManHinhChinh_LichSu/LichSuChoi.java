@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.doanandroid.Adapter.BangXepHangAdapter;
 import com.example.doanandroid.Adapter.LichSuChoiAdapter;
 import com.example.doanandroid.Class.LuotChoi;
 import com.example.doanandroid.R;

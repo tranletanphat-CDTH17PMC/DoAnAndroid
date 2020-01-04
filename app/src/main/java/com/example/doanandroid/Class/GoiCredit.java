@@ -2,6 +2,7 @@ package com.example.doanandroid.Class;
 
 public class GoiCredit {
     private String tenGoi;
+    private String credit;
     private String giaTien;
 
     public String getTenGoi() {
@@ -18,5 +19,13 @@ public class GoiCredit {
 
     public void setGiaTien(String giaTien) {
         this.giaTien = giaTien;
+    }
+
+    public String getCredit() {
+        return credit;
+    }
+
+    public void setCredit(String credit) {
+        this.credit = credit;
     }
 }

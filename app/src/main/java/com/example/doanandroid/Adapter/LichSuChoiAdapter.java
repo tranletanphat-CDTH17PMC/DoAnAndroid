@@ -15,7 +15,6 @@ import com.example.doanandroid.Class.LuotChoi;
 import com.example.doanandroid.R;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class LichSuChoiAdapter extends RecyclerView.Adapter<LichSuChoiAdapter.LichSuChoiViewHolder> {
     private final ArrayList<LuotChoi> mLuotChoi;

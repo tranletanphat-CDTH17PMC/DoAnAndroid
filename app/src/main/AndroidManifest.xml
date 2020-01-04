@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroGiupNguoiThan"></activity>
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.BangXepHang.BangXepHang"></activity>
+        <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroGiupNguoiThan" />
         <activity android:name=".ManHinhDangNhap.ManHinhChinh.ManHinhChinh_TroChoiMoi.TroGiupKhanGia" />
         <activity android:name=".ManHinhDangNhap.QuenMatKhau" />
         <activity android:name=".ManHinhDangNhap.DangKy" />
