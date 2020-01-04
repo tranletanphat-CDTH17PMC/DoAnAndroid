@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,15 +26,27 @@ public class LichSuChoi extends AppCompatActivity {
     private ArrayList<LuotChoi> mLuotChoi;
     private RecyclerView mRecyclerView;
     private LichSuChoiAdapter mAdapter;
-    private TextView txtLuotChoi, txtSoCau, txtDiem;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    TextView txtTen, txtCredit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_lich_su_choi);
-        txtLuotChoi = findViewById(R.id.txtLuotChoi);
-        txtSoCau = findViewById(R.id.txtSoCau);
-        txtDiem = findViewById(R.id.txtSoDiem);
+
+        txtTen = findViewById(R.id.txtTenTaiKhoan);
+        txtCredit = findViewById(R.id.txtCredit);
+
+        String ten, credit;
+
+        sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
+        ten = sharedPreferences.getString("ten_dang_nhap", "");
+        credit = sharedPreferences.getString("credit", "");
+
+        txtTen.setText(ten);
+        txtCredit.setText(credit);
+
         //Bắt intent từ activity màn hình chính
         Intent intent = getIntent();
         jSonLuotChoi = intent.getStringExtra("DSLuotChoi");

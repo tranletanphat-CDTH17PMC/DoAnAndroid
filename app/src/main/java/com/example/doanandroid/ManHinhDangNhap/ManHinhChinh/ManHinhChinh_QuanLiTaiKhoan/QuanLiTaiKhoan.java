@@ -3,6 +3,7 @@ package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh.ManHinhChinh_QuanLi
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,6 +23,9 @@ public class QuanLiTaiKhoan extends AppCompatActivity {
     TextView txtTenTK, txtEmail, txtMatKhau, txtMatKhau2;
     ArrayList<NguoiChoi> nguoiChoi;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,22 +34,26 @@ public class QuanLiTaiKhoan extends AppCompatActivity {
         txtEmail = findViewById(R.id.txtQLEmail);
         txtMatKhau = findViewById(R.id.txtQLMK);
         txtMatKhau2 = findViewById(R.id.txtQLMK2);
-        Intent intent = getIntent();
-        thongTinNguoiChoi = intent.getStringExtra("ThongTinNguoiChoi");
-        if (getThongTinNguoiChoi(thongTinNguoiChoi)) {
-            txtTenTK.setText(nguoiChoi.get(0).getTenDangNhap());
-            txtEmail.setText(nguoiChoi.get(0).getEmail());
-        } else {
-            Toast.makeText(this, thongTinNguoiChoi, Toast.LENGTH_LONG).show();
-            txtTenTK.setText("API not run");
-            txtEmail.setVisibility(View.INVISIBLE);
-            txtMatKhau.setVisibility(View.INVISIBLE);
-            txtMatKhau.setVisibility(View.INVISIBLE);
-        }
+        String ten, email;
+        sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
+        ten = sharedPreferences.getString("ten_dang_nhap", "");
+        email = sharedPreferences.getString("email", "");
+        txtTenTK.setText(ten);
+        txtEmail.setText(email);
+//        if (getThongTinNguoiChoi(thongTinNguoiChoi)) {
+//            txtTenTK.setText(nguoiChoi.get(0).getTenDangNhap());
+//            txtEmail.setText(nguoiChoi.get(0).getEmail());
+//        } else {
+//            Toast.makeText(this, thongTinNguoiChoi, Toast.LENGTH_LONG).show();
+//            txtTenTK.setText("API not run");
+//            txtEmail.setVisibility(View.INVISIBLE);
+//            txtMatKhau.setVisibility(View.INVISIBLE);
+//            txtMatKhau.setVisibility(View.INVISIBLE);
+//        }
 
     }
-    public void CapNhat(View view)
-    {
+
+    public void CapNhat(View view) {
         this.finish();
     }
 

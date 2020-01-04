@@ -3,6 +3,7 @@ package com.example.doanandroid.ManHinhDangNhap.ManHinhChinh;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,23 +23,29 @@ public class ManHinhChinh extends AppCompatActivity {
     TextView txtTenTaiKhoan, txtCredit;
     ArrayList<NguoiChoi> nguoiChoi;
     String thongTinNguoiChoi;
-
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private String ten, credit, id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_chinh);
         txtTenTaiKhoan = findViewById(R.id.txtUserName);
         txtCredit = findViewById(R.id.txtCredit);
-        Intent intent = getIntent();
-        thongTinNguoiChoi = intent.getStringExtra("ThongTinNguoiChoi");
-        if (getThongTinNguoiChoi(thongTinNguoiChoi)) {
-            HienThi();
-        } else {
-            Toast.makeText(this, thongTinNguoiChoi, Toast.LENGTH_LONG).show();
-            txtTenTaiKhoan.setText("API not run");
-            txtCredit.setVisibility(View.INVISIBLE);
 
-        }
+        sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
+        ten = sharedPreferences.getString("ten_dang_nhap","");
+        credit = sharedPreferences.getString("credit","");
+        id = sharedPreferences.getString("id","");
+        txtTenTaiKhoan.setText(ten);
+        txtCredit.setText(credit);
+//        if (getThongTinNguoiChoi(thongTinNguoiChoi)) {
+//            HienThi();
+//        } else {
+//            Toast.makeText(this, thongTinNguoiChoi, Toast.LENGTH_LONG).show();
+//            txtTenTaiKhoan.setText("API not run");
+//            txtCredit.setVisibility(View.INVISIBLE);
+//        }
     }
 
     public void HienThi() {
@@ -46,50 +53,48 @@ public class ManHinhChinh extends AppCompatActivity {
         txtCredit.setText(nguoiChoi.get(0).getCredit());
     }
 
-    private Boolean getThongTinNguoiChoi(String jSonString) {
-        try {
-            nguoiChoi = new ArrayList<>();
-            JSONObject root = new JSONObject(jSonString);
-            JSONArray jr = root.getJSONArray("data");;
-            int num = jr.length();
-            for (int i = 0; i < num; i++) {
-                JSONObject jb = jr.getJSONObject(i);
-                NguoiChoi thongTin = new NguoiChoi();
-                thongTin.setID(jb.getString("id"));
-                thongTin.setTenDangNhap(jb.getString("ten_dang_nhap"));
-                thongTin.setMatKhau(jb.getString("mat_khau"));
-                thongTin.setEmail(jb.getString("email"));
-                thongTin.setHinhDaiDien(jb.getString("hinh_dai_dien"));
-                thongTin.setDiemCaoNhat(jb.getString("diem_cao_nhat"));
-                thongTin.setCredit(jb.getString("credit"));
-                nguoiChoi.add(thongTin);
-            }
-            return true;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    private Boolean getThongTinNguoiChoi(String jSonString) {
+//        try {
+//            nguoiChoi = new ArrayList<>();
+//            JSONObject root = new JSONObject(jSonString);
+//            JSONArray jr = root.getJSONArray("data");;
+//            int num = jr.length();
+//            for (int i = 0; i < num; i++) {
+//                JSONObject jb = jr.getJSONObject(i);
+//                NguoiChoi thongTin = new NguoiChoi();
+//                thongTin.setID(jb.getString("id"));
+//                thongTin.setTenDangNhap(jb.getString("ten_dang_nhap"));
+//                thongTin.setMatKhau(jb.getString("mat_khau"));
+//                thongTin.setEmail(jb.getString("email"));
+//                thongTin.setHinhDaiDien(jb.getString("hinh_dai_dien"));
+//                thongTin.setDiemCaoNhat(jb.getString("diem_cao_nhat"));
+//                thongTin.setCredit(jb.getString("credit"));
+//                nguoiChoi.add(thongTin);
+//            }
+//            return true;
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
     public void ManHinhChinh_Click(View view) {
         switch (view.getId()) {
             case R.id.btnQLTK: {
                 Intent intent = new Intent(this, QuanLiTaiKhoan.class);
-                intent.putExtra("ThongTinNguoiChoi",thongTinNguoiChoi);
                 startActivity(intent);
                 break;
             }
-            case R.id.btnTroChoiMoi:{
+            case R.id.btnTroChoiMoi: {
                 new AsyncTask_TroChoiMoi(this).execute();
                 break;
             }
-            case R.id.btnMuaCredit:{
+            case R.id.btnMuaCredit: {
                 new Asystask_MuaCredit(this).execute();
                 break;
             }
-            case R.id.btnLichSuChoi:{
-                String NguoiChoiID = nguoiChoi.get(0).getID();
-                new AsyncTask_LichSu(this).execute(NguoiChoiID);
+            case R.id.btnLichSuChoi: {
+                new AsyncTask_LichSu(this).execute(id);
             }
 
         }

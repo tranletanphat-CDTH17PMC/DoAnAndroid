@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,11 +23,25 @@ public class MuaCredit extends AppCompatActivity {
     private ArrayList<GoiCredit> mCredit;
     private String jSonGoiCredit;
     private TextView tenGoiA, tenGoiB, tenGoiC, tenGoiD, giaTienA, giaTienB, giaTienC, giaTienD;
+    private TextView txtTen, txtCredit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_mua_credit);
+
+        txtTen = findViewById(R.id.txtTenTaiKhoan);
+        txtCredit = findViewById(R.id.txtCredit);
+
+        String ten, credit;
+        SharedPreferences sharedPreferences;
+        SharedPreferences.Editor editor;
+        sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
+        ten = sharedPreferences.getString("ten_dang_nhap", "");
+        credit = sharedPreferences.getString("credit", "");
+
+        txtTen.setText(ten);
+        txtCredit.setText(credit);
 
         tenGoiA = findViewById(R.id.txtGoiA);
         tenGoiB = findViewById(R.id.txtGoiB);

@@ -44,12 +44,10 @@ public class MainActivity extends AppCompatActivity {
         sTK = txtTK.getText().toString();
         sMK = txtMK.getText().toString();
         //Xác thực tạm
-        if (!(sTK == "" && sMK == "")) {
-            mediaPlayer.stop();
-            mediaPlayer = MediaPlayer.create(this, mNhac.get(1).getFile());
-            mediaPlayer.start();
-            new AsyncTask_DangNhap(sTK, this).execute();
-        }
+        mediaPlayer.stop();
+        mediaPlayer = MediaPlayer.create(this, mNhac.get(1).getFile());
+        mediaPlayer.start();
+        new AsyncTask_DangNhap(sTK, sMK, this).execute();
 
     }
 

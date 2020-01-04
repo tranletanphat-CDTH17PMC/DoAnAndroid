@@ -112,5 +112,6 @@
             android:onClick="ChonLinhVuc_Click"
             android:text="Thể Thao"
             android:textColor="#FCFFFFFF"></Button>
+
     </LinearLayout>
 </LinearLayout>

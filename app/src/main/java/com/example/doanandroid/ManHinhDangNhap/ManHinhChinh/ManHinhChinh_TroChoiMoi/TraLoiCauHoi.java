@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -46,11 +47,25 @@ public class TraLoiCauHoi extends AppCompatActivity {
     ProgressBar mDongHo;
     BarChart barChart;
     int vtRandom1, vtRandom2;
+    TextView txtTen, txtCredit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_hinh_hien_thi_cau_hoi);
+
+        txtTen = findViewById(R.id.txtTenTaiKhoan);
+        txtCredit = findViewById(R.id.txtCredit);
+
+        String ten, credit;
+        SharedPreferences sharedPreferences;
+        SharedPreferences.Editor editor;
+        sharedPreferences = getSharedPreferences("nguoiChoi", MODE_PRIVATE);
+        ten = sharedPreferences.getString("ten_dang_nhap", "");
+        credit = sharedPreferences.getString("credit", "");
+
+        txtTen.setText(ten);
+        txtCredit.setText(credit);
 
         mDongHo = findViewById(R.id.ProBarDongHo);
         NoiDung = findViewById(R.id.txtNoiDung);
@@ -68,7 +83,8 @@ public class TraLoiCauHoi extends AppCompatActivity {
         mRandom = new ArrayList<>();
         Intent intent = getIntent();
         jSonDSCauHoi = intent.getStringExtra("DanhSachCauHoi");
-
+        CauHoiSo.setText(soCau + "");
+        DiemSo.setText("Điểm số: " + diem);
         HienThiCauHoi();
     }
 
@@ -107,19 +123,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
         PhuongAnB.setVisibility(View.VISIBLE);
         PhuongAnC.setVisibility(View.VISIBLE);
         PhuongAnD.setVisibility(View.VISIBLE);
-        if (DoiCauHoi) {
-            CauHoiSo.setText(soCau + "");
-            DiemSo.setText("Điểm số: " + diem);
-        } else {
-            CauHoiSo.setText(soCau + "");
-            DiemSo.setText("Điểm số: " + diem);
-
-            diem = diem + 10;
-            soCau = soCau + 1;
-        }
         dongHo.cancel(true);
         startDongHo();
         if (getDSCauHoi(jSonDSCauHoi)) {
+
             PhuongAnA.setBackgroundResource(R.drawable.mau_cauhoi);
             PhuongAnB.setBackgroundResource(R.drawable.mau_cauhoi);
             PhuongAnC.setBackgroundResource(R.drawable.mau_cauhoi);
@@ -133,6 +140,7 @@ public class TraLoiCauHoi extends AppCompatActivity {
                 PhuongAnB.setText(cauHoi.getPhuongAnB());
                 PhuongAnC.setText(cauHoi.getPhuongAnC());
                 PhuongAnD.setText(cauHoi.getPhuongAnD());
+                Log.d("da", cauHoi.getPhuongAnDung());
             } else {
                 Toast.makeText(this, "Bạn đã hoàn thành lĩnh vực này", Toast.LENGTH_SHORT).show();
                 stopDongHo();
@@ -173,6 +181,10 @@ public class TraLoiCauHoi extends AppCompatActivity {
 
     public void LuaChon(boolean th) {
         if (th) {
+            diem += 10;
+            soCau -= -1;
+            CauHoiSo.setText(soCau + "");
+            DiemSo.setText("Điểm số: " + diem);
             new CountDownTimer(1000, 100) {
 
                 @Override
